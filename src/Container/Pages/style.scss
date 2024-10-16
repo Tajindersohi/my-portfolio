@@ -1,3 +1,94 @@
-.home-button-hire{
-    background-color: '#100f0d';
+.home-button-hire {
+    background-color: #100f0d; /* Corrected hex color without quotes */
 }
+
+.page-heading.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.page-heading h1 {
+    font-weight: bolder;
+    font-size: 48px; /* Larger font size for the main heading */
+    margin-bottom: 10px; /* Space between heading and paragraph */
+    letter-spacing: 1px; /* Slight spacing for better readability */
+    
+    /* Heading animation */
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.page-heading.animate h1 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.page-heading p {
+    color: #308d46;
+    font-weight: 600;
+    font-size: 20px; /* Maintain 20px for subheading */
+    line-height: 1.5; /* Add some line-height for better readability */
+    margin-top: 0; /* Ensure no additional space above the subheading */
+    
+    /* Subheading animation */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    transition-delay: 0.4s; /* Delay for subheading to animate after heading */
+}
+
+.page-heading.animate p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project-button {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 100px;
+    background-color: #308d46; /* Light blue background */
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid transparent;
+    transition: background-color 0.4s ease, color 0.4s ease, border 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.project-button:hover {
+    background-color: #2a7e38; /* Darker shade on hover */
+    color: #e0e0e0; /* Light gray text on hover */
+    border: 2px solid #fff; /* White border on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    transform: scale(1.05); /* Slightly scale up on hover */
+}
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px); /* Optional: add a slight upward movement */
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .fade-in {
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+
+// .home-container {
+//     background-image: url('../../Components/Images/bg-image-dark.jpg'); /* Path to your background image */
+//     background-size: cover; /* Ensures the image covers the entire background */
+//     background-position: center; /* Centers the background image */
+//     background-repeat: no-repeat; /* Prevents the image from repeating */
+//     min-height: 100vh; /* Ensures the background covers the full viewport height */
+//     display: flex; /* Flexbox to align content */
+//     justify-content: center; /* Centers content horizontally */
+//     align-items: center; /* Centers content vertically */
+// }

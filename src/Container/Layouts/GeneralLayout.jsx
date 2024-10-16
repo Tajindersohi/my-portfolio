@@ -1,35 +1,57 @@
-import React, { useState } from 'react';
-import Home from "../Pages/Home";
-import About from "../Pages/About";
-import Services from "../Pages/Services";
-import Projects from "../Pages/Projects";
-import Works from "../Pages/Works";
-import NavBar from "..";
+import React, { createContext, useState } from 'react';
+import darkBgImage from '../../Components/Images/bg-image-dark.jpg'; // Ensure the correct path to your image
+import { Outlet } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import HeaderBar from './HeaderBar';
+import Footer from './Footer';
+import './style.css';
+
+// Create the ThemeContext
+export const ThemeContext = createContext();
 
 function GeneralLayout() {
-const [currentTab, setCurrentTab] = useState('home');
+  const [theme, setTheme] = useState({
+    type: "light",
+    backgroundColor: "#fff",
+    headingColor: "#308d46",
+    subHeadingColor: "#308d46",
+    textColor: "#000",
+    activeColor:"#308d46",
+    hoverColor:"#308d46"
+  });
 
-const handleTab = (newTab) => {
-    setCurrentTab(newTab);
-}
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <Box
+        className="main-body"
+        style={{
+          backgroundColor: theme.backgroundColor,
+          backgroundImage: theme.type === "dark" ? `url(${darkBgImage})` : "", 
+          backgroundSize: 'cover', // Ensures image covers the entire background
+          backgroundPosition: 'center', // Centers the background image
+          backgroundRepeat: 'no-repeat', // Prevents background from repeating
+          minHeight: '100vh', // Ensures the background covers the full height
+        }}
+      >
+        {/* Header with the same background */}
+        <HeaderBar theme={theme} setTheme={setTheme} />
 
-const renderData = (tab) => {
-    switch(tab) {
-        case 'home': return <Home />;
-        case 'works': return <Works />;
-        case 'about': return <About />;
-        case 'projects': return <Projects />;
-        case 'services': return <Services />;
-        default: return null;
-    }
-}
+        <Grid container spacing={2}>
+          <Grid item mt={5} xs={12}>
+            <Box className="main-body" sx={{ pt: 5 }}>
+              <Outlet /> {/* Child routes can access both theme and setTheme */}
+            </Box>
+          </Grid>
 
-return (
-    <div>
-        <NavBar handleTab={handleTab} />
-        {renderData(currentTab)}
-    </div>
-);
+          {/* Footer with the same background */}
+          <Grid item className="primary-color" color={theme.textColor} xs={12}>
+            <Footer theme={theme} setTheme={setTheme}/>
+          </Grid>
+        </Grid>
+      </Box>
+    </ThemeContext.Provider>
+  );
 }
 
 export default GeneralLayout;

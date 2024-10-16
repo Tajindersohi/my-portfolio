@@ -1,68 +1,58 @@
-import { Box, Button, ButtonGroup, Container, Grid, Paper, Stack, Typography, styled } from '@mui/material'
-import React from 'react'
-import Image1 from '../../Components/Images/pc.jpg'
-import CallMadeIcon from '@mui/icons-material/CallMade';
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  }));
+import React, { useContext, useEffect, useState } from 'react';
+import { Box, Grid } from '@mui/material';
+import { Link } from 'react-router-dom';
+import './style.scss'; // Ensure the image is properly referenced in the SCSS file
+import { ThemeContext } from '../Layouts/GeneralLayout';
+import lightBgImage from '../../Components/Images/myPic.jpg'
 
 function Home() {
-  return (
-    <Box alignItems="center">
-        <Box
-        height={600}
-        className='pl-4'
-        >
-            <Grid container pt={2}>
-                <Grid mt={12} xs={6}>
-                    <Box>
-                        <h1>Hii!</h1>
-                        <h1>I am Tajinder Sohi</h1>
-                        <h3>"Unlocking the Power of React: Elevating Digital Experiences with Precision and Passion"</h3>
-                        <ButtonGroup variant="contained" aria-label="Basic button group">
-                        <Button className='home-button-hire'>Hire Me!</Button>
-                        <Button variant='outlined' endIcon={<CallMadeIcon/>}>Projects</Button>
-                        </ButtonGroup>
-                    </Box>
-                </Grid>
-                <Grid xs={6} mt={5}>
-                    <Box >
-                        <img src={Image1} alt='img' height='544px' width='600px' style={{float:'right'}}/>
-                    </Box>
-                </Grid>
-            </Grid>
-        </Box>
-        <Box
-        sx={{backgroundColor:'#100f0d'}}>
-            <Grid container>
-                <Grid item xs={6}>
+    const { theme } = useContext(ThemeContext);
+    const [animate, setAnimate] = useState(false);
+
+    useEffect(() => {
+        // Trigger animation when the component mounts
+        setTimeout(() => setAnimate(true), 100);
+    }, []);
+
+    return (
+        <Box alignItems="center" className="home-container">
+            <Box height={600} className="pl-4"
+                style={{ textAlign: "center", color:theme.textColor ,opacity: animate ? 1 : 0, transition: 'opacity 1s ease-in-out' }} // Apply opacity transition
+            >
+                <Grid container pt={2}>
+                    <Grid mt={12} item xs={12} md={12}>
+                        <Box style={{color:theme.textColor}} className={`page-heading ${animate ? 'animate' : ''}`}>
+                            <h1>HEY, I'M TAJINDER SOHI</h1>
+                            <div className="my-5">
+                                <p>A Frontend focused Web Developer building Frontend of Websites and Web</p>
+                                <p>Applications that lead to the success of the overall project</p>
+                            </div>
+                            <Box mt={5}>
+                                <Link to="/projects" className="project-button">
+                                    Click Here for Projects
+                                </Link>
+                            </Box>
+                        </Box>
+                    </Grid>
+                    {/* <Grid mt={12} item xs={12} md={6}>
                     <Box
-                    my={4}
-                    display="flex"
-                    alignItems="center"
-                    gap={4}
-                    p={2}
-                    >
-                    <h3>Project Statistics 2022</h3>
-                    </Box>
+                            alt=""
+                            sx={{
+                                width: '100%',
+                                height: { xs: '300px', md: '400px' }, // Responsive height
+                                backgroundImage: theme.type === "light" ? `url(${lightBgImage})` : "",
+                                backgroundSize: 'cover', // Cover for a more dynamic look
+                                backgroundPosition: 'center',
+                                backgroundRepeat: 'no-repeat',
+                                borderRadius: '8px',
+                                boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)', // Soft shadow for depth
+                            }}
+                        />
+                    </Grid> */}
                 </Grid>
-                <Grid item xs={6}>
-                    <Box sx={{ width: '100%' }}>
-                    <Stack spacing={2}>
-                        <Typography>Website Design</Typography>
-                        <Typography>MobileApp Design</Typography>
-                        <Typography>Brand Identity</Typography>
-                    </Stack>
-                    </Box>
-                </Grid>
-            </Grid>
+            </Box>
         </Box>
-    </Box>
-  )
+    );
 }
 
-export default Home
+export default Home;

@@ -1,19 +1,34 @@
-import { Box, Container, Grid } from '@mui/material'
-import React from 'react'
-import NavBar from '..'
+import { Box, Grid } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import './style.scss'; // Ensure to import your CSS file for styles
 
 function Projects() {
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    // Trigger animation when the component mounts
+    setTimeout(() => setAnimate(true), 100); // Delay to ensure the animation plays
+  }, []);
+
   return (
     <Box>
-    <Grid container mt={4}>
-        <Grid xs={6}>
-            <Box>
-                <h1>Projects</h1>
-            </Box>
+      <Grid container mt={4}>
+        <Grid item xs={12} mt={12}>
+          <Box 
+            style={{ textAlign: "center", opacity: animate ? 1 : 0, transition: 'opacity 1s ease-in-out' }} // Apply opacity transition
+          >
+            <img 
+              width="100" 
+              height="100" 
+              src="https://img.icons8.com/external-bearicons-outline-color-bearicons/50/external-Coming-Soon-miscellany-texts-and-badges-bearicons-outline-color-bearicons.png" 
+              alt="Coming Soon"
+            />
+            <h1>Coming Soon........</h1>
+          </Box>
         </Grid>
-    </Grid>
+      </Grid>
     </Box>
-  )
+  );
 }
 
-export default Projects
+export default Projects;
