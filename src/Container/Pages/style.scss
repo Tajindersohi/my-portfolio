@@ -9,7 +9,7 @@
 
 .page-heading h1 {
     font-weight: bolder;
-    font-size: 48px; /* Larger font size for the main heading */
+    font-size: 65px; /* Larger font size for the main heading */
     margin-bottom: 10px; /* Space between heading and paragraph */
     letter-spacing: 1px; /* Slight spacing for better readability */
     
@@ -19,13 +19,27 @@
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
+.page-heading h4 {
+    font-weight: bolder;
+    font-size: 65px; /* Larger font size for the main heading */
+    margin-bottom: 10px; /* Space between heading and paragraph */
+    letter-spacing: 1px; /* Slight spacing for better readability */
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
 .page-heading.animate h1 {
+    opacity: 1;
+    transform: translateY(0);
+}
+.page-heading.animate h4 {
     opacity: 1;
     transform: translateY(0);
 }
 
 .page-heading p {
-    color: #308d46;
+    // color: #308d46;
     font-weight: 600;
     font-size: 20px; /* Maintain 20px for subheading */
     line-height: 1.5; /* Add some line-height for better readability */
@@ -92,3 +106,42 @@
 //     justify-content: center; /* Centers content horizontally */
 //     align-items: center; /* Centers content vertically */
 // }
+.image-container {
+    position: relative;
+    overflow: hidden;
+    border: 5px solid #ccc; /* Add border */
+    border-radius: 10px; /* Rounded corners */
+  }
+  
+  .styled-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: grayscale(100%); /* Ensure the image is black and white */
+    position: relative;
+    z-index: 1;
+  }
+  
+  .image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.1) 0,
+      rgba(255, 255, 255, 0.1) 1px,
+      transparent 1px,
+      transparent 10px
+    );
+    z-index: 2; /* Place lines above the image */
+    pointer-events: none; /* Ensure lines don't interfere with mouse events */
+  }
+
+  p{
+    font-family: sans-serif;
+    color:"#748383";
+  }
+  

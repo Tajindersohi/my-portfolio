@@ -16,7 +16,7 @@ function GeneralLayout() {
     backgroundColor: "#fff",
     headingColor: "#308d46",
     subHeadingColor: "#308d46",
-    textColor: "#000",
+    textColor: "#777676",
     activeColor:"#308d46",
     hoverColor:"#308d46"
   });

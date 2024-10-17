@@ -64,22 +64,19 @@ console.log("theme",theme.activeColor,currentRoute === "/" ? theme.activeColor :
   return (
     <>
       <AppBar className="header-container" sx={{ backgroundColor: theme.backgroundColor, justifyContent: 'center', display: 'block' }}>
-        <Toolbar sx={{ justifyContent: { md: "center" } }}>
+        <Toolbar sx={{ justifyContent: { md: "center" }}}>
         <Box
-          mt={5}
           sx={{ 
         position: 'absolute', 
         left: { xs: '25%', md: 0 },  // Adjust positioning based on screen size
-        // transform: { xs: 'translateX(-50%)', md: 'none' }, 
-        // top: { xs: '10px', md: '20px' }, 
       }}>
       <Link
         className={`nav-buttons ${currentRoute === '/' ? 'active' : ''}`}
         to={"/"}
         style={{ color: theme.textColor }}
       >
-        {/* <b>Tajinder</b> */}
-        {/* <img src={logo1} alt='Logo' height="150px" width="200px" /> */}
+        {/* <b style={{fontSize:"40px"}}>Tajinder</b> */}
+        <img src={logo1} alt='Logo' height="100px" width="150px" />
       </Link>
     </Box>
           <IconButton
@@ -100,7 +97,7 @@ console.log("theme",theme.activeColor,currentRoute === "/" ? theme.activeColor :
                 key={item.title}
                 style={{color:currentRoute === item.link ? "" :theme.textColor}}
               >
-                {item.title}
+                <b>{item.title}</b>
               </Link>
             ))}
           </Box>

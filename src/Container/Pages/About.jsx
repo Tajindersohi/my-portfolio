@@ -1,96 +1,63 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Box, Typography, Container, Grid, Paper, Card, CardContent, CardHeader, styled } from '@mui/material';
+import { Box, Typography, Container, Grid, Paper, Card, styled } from '@mui/material';
 import { ThemeContext } from '../Layouts/GeneralLayout';
+import Skills from '../Skills';
+import signature from '../../Components/Images/signature.png'
 
 const Section = styled(Box)(({ theme }) => ({
   marginBottom: theme.spacing(4),
 }));
 
-const Item = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(2),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-  backgroundColor: theme.palette.background.paper,
-}));
+const VerticalText = styled(Typography)(({ theme }) => ({
+  writingMode: 'vertical-lr', // Vertical by default
+  textOrientation: 'mixed',
+  fontWeight: 600,
+  color: "#308d46",
+  transform: 'rotate(180deg)', // Rotate the text upside down for vertical display
 
-const CardStyled = styled(Card)(({ theme }) => ({
-  // marginBottom: theme.spacing(2),
-  borderRadius:"10px",
-  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-  '&:hover': {
-    transform: 'scale(1.05)', // Slightly enlarge the card on hover
-    boxShadow: `0px 8px 20px rgba(0, 0, 0, 0.3)`, // More pronounced shadow on hover
-    // backgroundColor: theme.hoverColor, // Optional: change background color on hover
-    cursor:"pointer"
+  // Change to horizontal on small screens
+  [theme.breakpoints.down('sm')]: {
+    writingMode: 'horizontal-tb', // Horizontal text on small screens
+    transform: 'none', // No rotation for horizontal text
   },
 }));
 
 function About() {
   const [animate, setAnimate] = useState(false);
   const { theme } = useContext(ThemeContext);
-console.log("theme",theme);
+
   useEffect(() => {
-    // Trigger animation when the component mounts
-    setTimeout(() => setAnimate(true), 100); // Delay to ensure the animation plays
+    setTimeout(() => setAnimate(true), 100);
   }, []);
+
   return (
     <Container 
-    style={{ textAlign: "center", opacity: animate ? 1 : 0, transition: 'opacity 1s ease-in-out' }} // Apply opacity transition
-    
-    className="primary-color" maxWidth="md" sx={{ py: 4 }}>
-      <Typography color={theme.headingColor} variant="h4" component="h4" gutterBottom>
-      About Me
-      </Typography>
-      <Section color={theme.textColor}>
-        <Typography variant="h6" paragraph>
-          Hello! I'm Tajinder Sohi, a passionate software developer with a strong background in computer science.
-        </Typography>
-        <Typography variant="body1" paragraph>
-          I specialize in creating efficient and scalable web applications. With a keen interest in technology and a drive to stay updated with the latest trends, I strive to deliver high-quality solutions that meet client needs and exceed expectations.
-        </Typography>
-        <Typography variant="body1" paragraph>
-          My journey in the world of technology began with a Bachelor’s degree in Computer Science from Kurukshetra University, followed by a Master’s degree in Computer Applications from the same institution. This solid educational foundation has equipped me with a broad understanding of both theoretical and practical aspects of software development.
-        </Typography>
-        <Typography variant="body1" paragraph>
-          I enjoy working on diverse projects, from building responsive web applications using modern frameworks to solving complex problems with innovative solutions. My goal is to continuously enhance my skills and contribute to meaningful projects that make a difference.
-        </Typography>
-      </Section>
-
-      <Typography color={theme.headingColor} variant="h4" component="h4" gutterBottom>
-        Education
-      </Typography>
-      <Grid container spacing={2}>
-        <Grid item xs={12} md={6}>
-          <CardStyled theme={theme}>
-            <CardHeader 
-            sx={{ backgroundColor: theme.backgroundColor, color:theme.textColor }}
-            title="Master of Computer Applications (MCA)" />
-            <CardContent
-              sx={{ backgroundColor: theme.backgroundColor, color:theme.textColor }}
-            >
-              <Typography variant="body1"
-              sx={{ backgroundColor: theme.backgroundColor, color:theme.textColor }}
-              >
-                Kurukshetra University, Kurukshetra
-              </Typography>
-            </CardContent>
-          </CardStyled>
+      style={{ textAlign: "center", opacity: animate ? 1 : 0, transition: 'opacity 1s ease-in-out' }} 
+      className="primary-color" maxWidth="md" sx={{ py: 4 }}>
+      <Grid container>
+        <Grid item xs={12}>
+          <Typography sx={{ fontWeight: 800 }} mb={6} color={theme.headingColor} variant="h4" component="h4" gutterBottom>
+            ⎯ About Me
+          </Typography>
+          <Section color={theme.textColor}>
+            <Typography variant="body1" paragraph>
+              Hello! I'm Tajinder Sohi, a passionate software developer with a strong background in computer science.
+            </Typography>
+            <Typography variant="body1" paragraph>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa numquam fuga, sequi cumque quisquam cupiditate accusamus nam, dolorum magni, qui consectetur dolor! Et impedit, illum repudiandae fugiat cumque veniam adipisci!
+            </Typography>
+          </Section>
+          <img style={{marginRight:"600px", height:"90px"}}  src={signature}/>
         </Grid>
-        <Grid item xs={12} md={6}>
-          <CardStyled theme={theme}>
-            <CardHeader 
-            sx={{ backgroundColor: theme.backgroundColor, color:theme.textColor }}
-            title="Bachelor of Science in Computer Science (BSc)" />
-            <CardContent
-            sx={{ backgroundColor: theme.backgroundColor, color:theme.textColor }}
-            >
-              <Typography variant="body1"
-              sx={{ backgroundColor: theme.backgroundColor, color:theme.textColor }}
-              >
-                Kurukshetra University, Kurukshetra
-              </Typography>
-            </CardContent>
-          </CardStyled>
+      </Grid>
+      <Grid container>
+        <Grid item xs={10} md={2} display="flex" alignItems="center" px={7} justifyContent="flex-end">
+          <VerticalText variant="h4" gutterBottom>
+            ⎯ My Skills
+          </VerticalText>
+        </Grid>
+        <Grid item xs={10}>
+          <Skills theme={theme}/>
         </Grid>
       </Grid>
     </Container>

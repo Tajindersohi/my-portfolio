@@ -53,10 +53,11 @@ const ThemeSwitch = styled(Switch)(({ theme }) => ({
 const lightTheme = {
   type: "light",
   backgroundColor: "#fff",
-  headingColor: "#000",
-  subHeadingColor: "#000",
-  textColor: "#000",
-//   backgroundImage:url('src\Components\Images\bg-image-dark.jpg')
+  headingColor: "#308d46",
+  subHeadingColor: "#308d46",
+  textColor: "#777676",
+  activeColor:"#308d46",
+  hoverColor:"#308d46"
 };
 
 const darkTheme = {

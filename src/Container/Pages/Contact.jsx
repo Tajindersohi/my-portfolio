@@ -14,9 +14,10 @@ import { createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
 // import { Label } from '@mui/icons-material';
 const SubmitButton = styled(Button)(({ theme }) => ({
     color: theme.textColor,
-    backgroundColor: theme.textColor,
+    backgroundColor: "#fff",
     '&:hover': {
-      backgroundColor: theme.textColor,
+      backgroundColor: "#308d46",
+      color:"#fff"
     },
   }));
 
@@ -161,15 +162,17 @@ const SubmitButton = styled(Button)(({ theme }) => ({
       return (
           <Box alignItems="center" className="home-container">
               <Box height={600} className="pl-4"
-                style={{ textAlign: "center", opacity: animate ? 1 : 0, transition: 'opacity 1s ease-in-out' }} // Apply opacity transition
+                style={{ opacity: animate ? 1 : 0, transition: 'opacity 1s ease-in-out' }} // Apply opacity transition
               >
                   <Grid container pt={2}>
                       <Grid mt={12} item xs={12} md={theme.type === "light" ? 6 : 6}>
-                          <Box className={`page-heading ${animate ? 'animate' : ''}`}>
-                              <h1>Contact</h1>
-                              <div className="my-5">
-                                  <p>Email: tajindersohi1@gmail.com</p>
-                                  <p>Phone: 9518055232</p>
+                          <Box sx={{color:theme.textColor, paddingLeft:"200px"}} className={`page-heading ${animate ? 'animate' : ''}`}>
+                              <h1 style={{color:theme.headingColor}}>Contact</h1>
+                              <div sx={{color:theme.textColor}} className="my-5">
+                                <p>Let's make something new and different and <br></br> more meaningful or make thing <br></br>more visual and conceptual?</p>
+                                  <p>⎯⎯ 9518055232</p>
+                                  <p>⎯⎯ tajindersohi1@gmail.com</p>
+                                  <p>⎯⎯ Shahabad(M.), Haryana</p>
                               </div>
                           </Box>
                       </Grid>
