@@ -12,15 +12,15 @@ import Toolbar from '@mui/material/Toolbar';
 import { useLocation, Link } from 'react-router-dom';
 import ThemeToggle from '../Common/ThemeToggle';
 import './style.css';
-import logo1 from '../../Components/Images/Image__1_-removebg-preview.png'
+import logo1 from '../../Components/Images/Image__1_-removebg-preview.svg'
 
 const drawerWidth = 240;
 const navItems = [
   { title: "Home", link: "/" },
   { title: "About", link: "/about" },
-  { title: "Works", link: "/works" },
+  // { title: "Works", link: "/works" },
   { title: "Projects", link: "/projects" },
-  { title: "Services", link: "/services" },
+  // { title: "Services", link: "/services" },
   { title: "Contact", link: "/contact" },
 ];
 
@@ -29,13 +29,12 @@ function HeaderBar({ theme, setTheme, ...props }) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const location = useLocation();
   const currentRoute = location.pathname; // Current route path
-console.log("theme",theme.activeColor,currentRoute === "/" ? theme.activeColor : theme.textColor);
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ backgroundColor: "transparent", justifyContent: 'center', display: 'block',textAlign: 'center'  }} >
+    <Box onClick={handleDrawerToggle} sx={{ backgroundColor: theme.backgroundColor,color:theme.textColor, justifyContent: 'center', display: 'block',textAlign: 'center'  }} >
       <List>
         {navItems.map((item) => (
           <ListItem key={item.title} disablePadding>
@@ -45,7 +44,7 @@ console.log("theme",theme.activeColor,currentRoute === "/" ? theme.activeColor :
                   to={item.link}
                   key={item.title}
                   style={{
-                      // color: currentRoute === item.link ? theme.activeColor : theme.textColor,
+                      color: currentRoute === item.link ? theme.activeColor : theme.textColor,
                   }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = theme.hoverColor)} // Set hover color dynamically
                   onMouseLeave={(e) => (e.currentTarget.style.color = currentRoute === item.link ? theme.activeColor : theme.textColor)} // Reset color
@@ -80,10 +79,10 @@ console.log("theme",theme.activeColor,currentRoute === "/" ? theme.activeColor :
       </Link>
     </Box>
           <IconButton
-            color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
+            color={theme.textColor}
             sx={{ mr: 2, display: { sm: 'none' } }}
           >
             <MenuIcon />

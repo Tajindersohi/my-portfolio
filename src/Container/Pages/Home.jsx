@@ -15,9 +15,11 @@ function Home() {
         setTimeout(() => setAnimate(true), 100);
     }, []);
 
+    
+
     return (
         <Box alignItems="center" className="home-container">
-            <Box height={600} className="ml-5"
+            <Box height={600} className="m-4"
                 style={{marginLeft:6, color:theme.textColor ,opacity: animate ? 1 : 0, transition: 'opacity 1s ease-in-out' }} // Apply opacity transition
             >
                 <Grid container pt={2}>
@@ -29,19 +31,27 @@ function Home() {
                                 <p style={{color:theme.textColor}}>A Frontend focused Web Developer building Frontend of Websites and Web</p>
                                 <p style={{color:theme.textColor}}>Applications that lead to the success of the overall project</p>
                             </div>
-                            <Box mt={5}>
-                                <Link style={{marginRight:"40px"}} to="/" className="project-button">
-                                        Download CV
-                                </Link>
-                                <Link to="/projects" className="project-button">
-                                    Click Here for Projects
-                                </Link>
+                            <Box my={5}>
+                                <Grid container spacing={1} justifyContent="center">
+                                    <Grid item xs={12} sm={6}>
+                                        <Link to="/" className="project-button text-center" style={{ width: '70%' }}>
+                                            Download CV
+                                        </Link>
+                                    </Grid>
+                                    <Grid item xs={12} sm={6}>
+                                        <Link to="/projects" className="project-button text-center" style={{ width: '70%' }}>
+                                            Click Here for Projects
+                                        </Link>
+                                    </Grid>
+                                </Grid>
                             </Box>
+
                         </Box>
                     </Grid>
-                    <Grid mt={12} item xs={12} md={5.5}>
+                    {/* <Grid mt={12} item xs={12} md={5.5} className='image-container'>
                     <Box
                             alt=""
+                            className="project-image"
                             sx={{
                                 width: '100%',
                                 height: { xs: '300px', md: '400px' }, // Responsive height
@@ -53,7 +63,7 @@ function Home() {
                                 boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)', // Soft shadow for depth
                             }}
                         />
-                    </Grid>
+                    </Grid> */}
                 </Grid>
             </Box>
         </Box>

@@ -18,7 +18,7 @@ export default function AllRoutes() {
           <Route path="/services" element={<Suspense fallback={<LoadingIndicator/>}><Services /></Suspense>} />
           <Route path="/about" element={<Suspense fallback={<LoadingIndicator/>}><About /></Suspense>} />
           <Route path="/projects" element={<Suspense fallback={<LoadingIndicator/>}><Projects /></Suspense>} />
-          <Route path="/works" element={<Suspense fallback={<LoadingIndicator/>}><Works /></Suspense>} />
+          {/* <Route path="/works" element={<Suspense fallback={<LoadingIndicator/>}><Works /></Suspense>} /> */}
           <Route path="/contact" element={<Suspense fallback={<LoadingIndicator/>}><Contact /></Suspense>} />
         </Route>
       </Routes>

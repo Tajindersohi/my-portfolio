@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 
-export default function LoadingIndicator() {
+export default function LoadingIndicator({message = "Loading..."}) {
   return (
     <Box
       sx={{
@@ -13,7 +13,7 @@ export default function LoadingIndicator() {
       }}
     >
       <div className="spinner-border" style={{ width: '3rem', height: '3rem' }} role="status">
-        <span className="sr-only">Loading...</span>
+        <span className="sr-only">{message}</span>
       </div>
     </Box>
   );

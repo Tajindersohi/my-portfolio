@@ -1,6 +1,6 @@
-import React, { createContext, useState } from 'react';
-import darkBgImage from '../../Components/Images/bg-image-dark.jpg'; // Ensure the correct path to your image
-import { Outlet } from 'react-router-dom';
+import React, { createContext, useEffect, useState } from 'react';
+import whiteBgImage from '../../Components/Images/dvn6.jpg'; // Ensure the correct path to your image
+import { Outlet, useLocation } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import HeaderBar from './HeaderBar';
@@ -21,13 +21,19 @@ function GeneralLayout() {
     hoverColor:"#308d46"
   });
 
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
       <Box
         className="main-body"
         style={{
           backgroundColor: theme.backgroundColor,
-          backgroundImage: theme.type === "dark" ? `url(${darkBgImage})` : "", 
+          backgroundImage: theme.type === "light" ? `url(${whiteBgImage})` : "", 
           backgroundSize: 'cover', // Ensures image covers the entire background
           backgroundPosition: 'center', // Centers the background image
           backgroundRepeat: 'no-repeat', // Prevents background from repeating

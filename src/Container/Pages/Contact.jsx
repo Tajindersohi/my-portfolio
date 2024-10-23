@@ -10,7 +10,9 @@ import clsx from 'clsx';
 import { purple } from '@mui/material/colors';
 // import { FormControl, useFormControlContext } from '@mui/base/FormControl';
 import { createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
-
+import Snackbar, { SnackbarCloseReason } from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
+import LoadingIndicator from '../Common/LoadingIndicator';
 // import { Label } from '@mui/icons-material';
 const SubmitButton = styled(Button)(({ theme }) => ({
     color: theme.textColor,
@@ -94,9 +96,7 @@ const SubmitButton = styled(Button)(({ theme }) => ({
         MuiInputBase:{
           styleOverrides: {
             root: {
-              root: {
-                "color":theme.textColor
-               },
+                "color":theme.headingColor
             },
           },
         }
@@ -114,6 +114,24 @@ const SubmitButton = styled(Button)(({ theme }) => ({
         phone:"",
         message:""
       })
+      const [open, setOpen] = React.useState(false);
+      const [submit, setSubmit] = React.useState(false);
+
+      const handleClick = () => {
+        setOpen(true)
+      };
+    
+      const handleClose = (
+        event?: React.SyntheticEvent | Event,
+        reason?: SnackbarCloseReason,
+      ) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+    
+        setOpen(false);
+      };
+    
       const outerTheme = useTheme();
       useEffect(() => {
           setTimeout(() => setAnimate(true), 100);
@@ -121,6 +139,7 @@ const SubmitButton = styled(Button)(({ theme }) => ({
 
           
       const onSubmit = async (event) => {
+        setSubmit(true)
         event.preventDefault();
         if(error.length > 0){
           for(let i=0; i< error.length; i++){
@@ -140,14 +159,15 @@ const SubmitButton = styled(Button)(({ theme }) => ({
         const data = await response.json();
 
         if (data.success) {
-          // setResult("Form Submitted Successfully");
           event.target.reset();
+          setOpen(true);
+          setSubmit(false)
         } else {
           console.log("Error", data);
-          // setResult(data.message);
+          setOpen(true);
+          setSubmit(false)
         }
       };
-      console.log("data",data,error);
 
       const handleChange = (type,val) => {
           document.getElementById(type+"Error").innerText = "";
@@ -161,13 +181,30 @@ const SubmitButton = styled(Button)(({ theme }) => ({
 
       return (
           <Box alignItems="center" className="home-container">
+            {submit ? 
+                <LoadingIndicator message='Submitting...'/>
+                :
               <Box height={600} className="pl-4"
+              sx={{ mb: { xs: "400px", md:0 } }}
                 style={{ opacity: animate ? 1 : 0, transition: 'opacity 1s ease-in-out' }} // Apply opacity transition
               >
+                  <Snackbar open={open} 
+                      anchorOrigin={{ vertical :'top' , horizontal: 'right' }}
+                      autoHideDuration={1200}
+                      onClose={handleClose}>
+                    <Alert
+                      onClose={handleClose}
+                      severity="success"
+                      variant="filled"
+                      sx={{ width: '100%' }}
+                    >
+                      Data submit Successfully.
+                    </Alert>
+                  </Snackbar>
                   <Grid container pt={2}>
                       <Grid mt={12} item xs={12} md={theme.type === "light" ? 6 : 6}>
-                          <Box sx={{color:theme.textColor, paddingLeft:"200px"}} className={`page-heading ${animate ? 'animate' : ''}`}>
-                              <h1 style={{color:theme.headingColor}}>Contact</h1>
+                          <Box sx={{justifyItems:"center", color:theme.textColor}} className={`page-heading ${animate ? 'animate' : ''}`}>
+                              <h2 style={{color:theme.headingColor}}>⎯ Contact me</h2>
                               <div sx={{color:theme.textColor}} className="my-5">
                                 <p>Let's make something new and different and <br></br> more meaningful or make thing <br></br>more visual and conceptual?</p>
                                   <p>⎯⎯ 9518055232</p>
@@ -215,6 +252,7 @@ const SubmitButton = styled(Button)(({ theme }) => ({
                       </Grid>
                   </Grid>
               </Box>
+            }
           </Box>
       );
   }

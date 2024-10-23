@@ -17,8 +17,8 @@ function Footer({theme}) {
         mx:2
       }}
     >
-      <Grid container spacing={1} justifyContent="space-between" alignItems="center">
-        <Grid item xs={12} sm={4} ml={1}>
+      <Grid container spacing={1} sx={{ mt: { xs: "100px", md:0 } }} justifyContent="space-between" alignItems="center">
+        <Grid item xs={12}   sm={4} ml={1}>
           <Box display="flex" justifyContent={{ xs: 'center', sm: 'flex-start' }}>
             <IconButton href="https://www.facebook.com" target="_blank" aria-label="Facebook" sx={{ color: theme.type == "dark" ? '#fff' : '#000'}}>
               <FacebookIcon />

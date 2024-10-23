@@ -18,7 +18,7 @@ const Skills = ({theme}) => {
 
       const timer = setInterval(() => {
         if (value < skill.level) {
-          value += 1; // Adjust the increment speed as needed
+          value += 1; 
           setProgress((prev) => {
             const newProgress = [...prev];
             newProgress[index] = value;
@@ -27,7 +27,7 @@ const Skills = ({theme}) => {
         } else {
           clearInterval(timer);
         }
-      }, 20); // Adjust the interval timing for speed
+      }, 30); 
 
       return timer;
     });
