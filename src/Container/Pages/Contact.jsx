@@ -121,14 +121,7 @@ const SubmitButton = styled(Button)(({ theme }) => ({
         setOpen(true)
       };
     
-      const handleClose = (
-        event?: React.SyntheticEvent | Event,
-        reason?: SnackbarCloseReason,
-      ) => {
-        if (reason === 'clickaway') {
-          return;
-        }
-    
+      const handleClose = () =>{ 
         setOpen(false);
       };
     
@@ -203,16 +196,17 @@ const SubmitButton = styled(Button)(({ theme }) => ({
                   </Snackbar>
                   <Grid container pt={2}>
                       <Grid mt={12} item xs={12} md={theme.type === "light" ? 6 : 6}>
-                          <Box sx={{justifyItems:"center", color:theme.textColor}} className={`page-heading ${animate ? 'animate' : ''}`}>
-                              <h2 style={{color:theme.headingColor}}>⎯ Contact me</h2>
-                              <div sx={{color:theme.textColor}} className="my-5">
-                                <p>Let's make something new and different and <br></br> more meaningful or make thing <br></br>more visual and conceptual?</p>
-                                  <p>⎯⎯ 9518055232</p>
-                                  <p>⎯⎯ tajindersohi1@gmail.com</p>
-                                  <p>⎯⎯ Shahabad(M.), Haryana</p>
-                              </div>
-                          </Box>
+                        <Box sx={{justifyItems:"center", color:theme.textColor}} className={`page-heading ${animate ? 'animate' : ''}`}>
+                            <h2 style={{color:theme.headingColor}}>⎯ Contact Me</h2>
+                            <div sx={{color:theme.textColor}} className="my-5">
+                                <p>✨ Let's connect and create something extraordinary together!</p>
+                                <p>⎯⎯ 9518055232</p>
+                                <p>⎯⎯ tajindersohi1@gmail.com</p>
+                                <p>⎯⎯ Shahabad(M.), Haryana</p>
+                            </div>
+                        </Box>
                       </Grid>
+
                       <Grid mt={12} item xs={12} md={6}>
                           <Box width={'70%'} margin={'auto'}>
                           <form onSubmit={onSubmit}>

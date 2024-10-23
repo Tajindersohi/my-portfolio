@@ -14,9 +14,10 @@ function GeneralLayout() {
   const [theme, setTheme] = useState({
     type: "light",
     backgroundColor: "#fff",
-    headingColor: "#308d46",
-    subHeadingColor: "#308d46",
-    textColor: "#777676",
+    headingColor: "#1b5e20",
+    subHeadingColor: "#1b5e20",
+    textColor: "#333",
+    // textColor: "#777676",
     activeColor:"#308d46",
     hoverColor:"#308d46"
   });

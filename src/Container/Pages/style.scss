@@ -144,6 +144,13 @@
     font-family: sans-serif;
     color:"#748383";
   }
+  p {
+    font-size: 18px !important; /* or 18px */
+    font-family: 'Roboto', sans-serif !important; /* or 'Merriweather', serif */
+    font-weight: 400 !important; /* or 500 */
+    line-height: 1.5 !important; /* or 1.6 */
+}
+
   .gradient-text {
     display: inline-block; /* Ensure it only takes the width of the text */
     background: linear-gradient(90deg, #FF007F, #00FF7F); /* Default gradient */

@@ -20,19 +20,47 @@ function Footer({theme}) {
       <Grid container spacing={1} sx={{ mt: { xs: "100px", md:0 } }} justifyContent="space-between" alignItems="center">
         <Grid item xs={12}   sm={4} ml={1}>
           <Box display="flex" justifyContent={{ xs: 'center', sm: 'flex-start' }}>
-            <IconButton href="https://www.facebook.com" target="_blank" aria-label="Facebook" sx={{ color: theme.type == "dark" ? '#fff' : '#000'}}>
-              <FacebookIcon />
+             <IconButton
+                href="https://www.facebook.com/tajinder.sohi.35"
+                target="_blank"
+                aria-label="Facebook"
+                sx={{
+                    color: theme.type === "dark" ? '#fff' : '#000',
+                    '&:hover': {
+                        color: '#1b5e20',
+                        backgroundColor: 'white',
+                    },
+                }}
+             >
+                <FacebookIcon />
+
             </IconButton>
-            <IconButton href="https://www.twitter.com" target="_blank" aria-label="Twitter" sx={{ color: theme.type == "dark" ? '#fff' : '#000'}}>
+            <IconButton href="https://www.twitter.com" target="_blank" aria-label="Twitter" 
+                sx={{ color: theme.type == "dark" ? '#fff' : '#000',   '&:hover': {
+                      color: '#1b5e20',
+                      backgroundColor: 'white',
+                  }}}>
               <TwitterIcon />
             </IconButton>
-            <IconButton href="https://www.instagram.com" target="_blank" aria-label="Instagram" sx={{ color: theme.type == "dark" ? '#fff' : '#000'}}>
+            <IconButton href="https://www.instagram.com/_sohi_lucky/" target="_blank" aria-label="Instagram" 
+                sx={{'&:hover': {
+                    color:'#1b5e20',
+                    backgroundColor: 'white',
+                }, color: theme.type == "dark" ? '#fff' : '#000'}}>
               <InstagramIcon />
             </IconButton>
-            <IconButton href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn" sx={{ color: theme.type == "dark" ? '#fff' : '#000'}}>
+            <IconButton href="https://www.linkedin.com/in/tajinder-sohi-251817221/" target="_blank" aria-label="LinkedIn" 
+                sx={{'&:hover': {
+                    color: '#1b5e20',
+                    backgroundColor: 'white',
+                }, color: theme.type == "dark" ? '#fff' : '#000'}}>
               <LinkedInIcon />
             </IconButton>
-            <IconButton href="https://www.github.com" target="_blank" aria-label="GitHub" sx={{ color: theme.type == "dark" ? '#fff' : '#000'}}>
+            <IconButton href="https://github.com/Tajindersohi/" target="_blank" aria-label="GitHub" 
+                sx={{'&:hover': {
+                    color: '#1b5e20',
+                    backgroundColor: 'white',
+                }, color: theme.type == "dark" ? '#fff' : '#000'}}>
               <GitHubIcon />
             </IconButton>
           </Box>

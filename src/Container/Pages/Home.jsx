@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Box, Grid } from '@mui/material';
+import { Box, Button, Grid } from '@mui/material';
 import { Link } from 'react-router-dom';
 import './style.scss'; // Ensure the image is properly referenced in the SCSS file
 import { ThemeContext } from '../Layouts/GeneralLayout';
@@ -14,7 +14,10 @@ function Home() {
         // Trigger animation when the component mounts
         setTimeout(() => setAnimate(true), 100);
     }, []);
-
+    
+    const downloadFile = () => {
+        window.location.href = "https://yoursite.com/src/assets/files/exampleDoc.pdf"
+      }
     
 
     return (
@@ -31,12 +34,12 @@ function Home() {
                                 <p style={{color:theme.textColor}}>A Frontend focused Web Developer building Frontend of Websites and Web</p>
                                 <p style={{color:theme.textColor}}>Applications that lead to the success of the overall project</p>
                             </div>
-                            <Box my={5}>
+                            <Box my={5} textAlign={'center'}>
                                 <Grid container spacing={1} justifyContent="center">
                                     <Grid item xs={12} sm={6}>
-                                        <Link to="/" className="project-button text-center" style={{ width: '70%' }}>
-                                            Download CV
-                                        </Link>
+                                    
+                                    <a style={{ width: '70%' }} href="/Pdf/TajinderResume.pdf"  className="project-button text-center" download>Download CV
+                                    </a>
                                     </Grid>
                                     <Grid item xs={12} sm={6}>
                                         <Link to="/projects" className="project-button text-center" style={{ width: '70%' }}>
