@@ -216,4 +216,14 @@
     position: relative;
     z-index: 2; // Bring text above gradient
   }
+  
 }
+
+.bubble {
+  opacity: 1; /* Default opacity */
+}
+
+.bubble.fade-out {
+  opacity: 0; /* Fade-out effect */
+}
+

@@ -62,7 +62,7 @@ function HeaderBar({ theme, setTheme, ...props }) {
 
   return (
     <>
-      <AppBar className="header-container" sx={{ background: theme.type == 'light' ? 'linear-gradient(262deg, #ffffff, #76dce3)' : '', backgroundColor: theme.backgroundColor, justifyContent: 'center', display: 'block' }}>
+      <AppBar className="header-container" sx={{ background: theme.type == 'light' ? 'linear-gradient(262deg, #ffffff, #76dce3)' : 'linear-gradient(23deg, black, #ffffff94)', backgroundColor: theme.backgroundColor, justifyContent: 'center', display: 'block' }}>
         <Toolbar sx={{ justifyContent: { md: "center" }}}>
         <Box
           sx={{ 

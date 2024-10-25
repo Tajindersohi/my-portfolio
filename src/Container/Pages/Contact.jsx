@@ -3,7 +3,6 @@ import { Box, Button, FormControl, Grid, outlinedInputClasses, TextField } from 
 import { Link } from 'react-router-dom';
 import './style.scss'; // Ensure the image is properly referenced in the SCSS file
 import { ThemeContext } from '../Layouts/GeneralLayout';
-import lightBgImage from '../../Components/Images/myPic.jpg'
 // import { Input, inputClasses } from '@mui/base/Input';
 import { styled } from '@mui/system';
 import clsx from 'clsx';
@@ -132,7 +131,6 @@ const SubmitButton = styled(Button)(({ theme }) => ({
 
           
       const onSubmit = async (event) => {
-        setSubmit(true)
         event.preventDefault();
         if(error.length > 0){
           for(let i=0; i< error.length; i++){
@@ -140,6 +138,8 @@ const SubmitButton = styled(Button)(({ theme }) => ({
           }
           return;
         }
+        setSubmit(true)
+
         const formData = new FormData(event.target);
 
         formData.append("access_key", "e5a9d894-4468-42e6-b8cb-9b3309a5ef5a");
@@ -208,32 +208,49 @@ const SubmitButton = styled(Button)(({ theme }) => ({
                       </Grid>
 
                       <Grid mt={12} item xs={12} md={6}>
-                          <Box width={'70%'} margin={'auto'}>
+                          <Box width={'90%'} margin={'auto'}>
                           <form onSubmit={onSubmit}>
                               <ThemeProvider theme={customTheme(outerTheme, theme)}>
                                 <Box display={'flex'} gap={8} >
-                                <FormControl defaultValue="" required>
-                                    <TextField sx={{color:theme.textColor}} id="standard-basic" label="First Name*" onChange={(e)=>handleChange("firstName",e.target.value)} value={data.firstName} name="firstname" variant="standard" />
-                                    <p id="firstNameError" className='text-danger' style={{color:"red"}}></p>
-                                </FormControl>
-                                <FormControl defaultValue="" required>
-                                    <TextField id="standard-basic" label="Last Name*" name="lastname" value={data.lastName} onChange={(e)=>handleChange("lastName",e.target.value)} variant="standard" />
+                                <FormControl defaultValue="" sx={{ width: '300px' }} required>
+                                  <TextField
+                                      sx={{ color: theme.textColor }}
+                                      id="standard-basic"
+                                      label={<span>First Name <span style={{ color: 'red' }}>*</span></span>}
+                                      onChange={(e) => handleChange("firstName", e.target.value)}
+                                      value={data.firstName}
+                                      name="firstname"
+                                      variant="standard"
+                                  />
+                                  <p id="firstNameError" className='text-danger' style={{ color: "red" }}></p>
+                              </FormControl>
+
+                                <FormControl defaultValue="" sx={{width:'300px'}} required>
+                                    <TextField id="standard-basic" 
+                                    label={<span>Last Name <span style={{ color: 'red' }}>*</span></span>}
+                                    name="lastname" value={data.lastName} onChange={(e)=>handleChange("lastName",e.target.value)} variant="standard" />
                                     <p id="lastNameError" className='text-danger' style={{color:"red"}}></p>
                                 </FormControl>
                                 </Box>
                                 <Box display={'flex'} gap={8} mt={5}>
-                                <FormControl defaultValue="" required>
-                                    <TextField id="standard-basic" label="Email*"  name="email" value={data.email} onChange={(e)=>handleChange("email",e.target.value)} variant="standard" />
+                                <FormControl defaultValue="" sx={{width:'300px'}} required>
+                                    <TextField id="standard-basic" 
+                                    label={<span>Email<span style={{ color: 'red' }}>*</span></span>}
+                                    name="email" value={data.email} onChange={(e)=>handleChange("email",e.target.value)} variant="standard" />
                                     <p id="emailError" className='text-danger'style={{color:"red"}}></p>
                                 </FormControl>
-                                <FormControl defaultValue="" required>
-                                    <TextField id="standard-basic" label="Phone*"  name="phone" value={data.phone} onChange={(e)=>handleChange("phone",e.target.value)} variant="standard" />
+                                <FormControl defaultValue="" sx={{width:'300px'}} required>
+                                    <TextField id="standard-basic" 
+                                    label={<span>Phone<span style={{ color: 'red' }}>*</span></span>}
+                                    name="phone" value={data.phone} onChange={(e)=>handleChange("phone",e.target.value)} variant="standard" />
                                     <p id="phoneError" className='text-danger' style={{color:"red"}}></p>
                                 </FormControl>
                                 </Box>
                                 <Box mt={5}>
-                                    <FormControl defaultValue="" required>
-                                        <TextField id="standard-basic" label="Leave a message*"  name="message" onChange={(e)=>handleChange("message",e.target.value)} value={data.message} variant="standard" sx={{width:"100%"}}/>
+                                    <FormControl defaultValue="" sx={{width:'300px'}}required>
+                                        <TextField id="standard-basic" 
+                                        label={<span>Leave a message<span style={{ color: 'red' }}>*</span></span>}
+                                        name="message" onChange={(e)=>handleChange("message",e.target.value)} value={data.message} variant="standard" sx={{width:"100%"}}/>
                                         <p id="messageError" className='text-danger' style={{color:"red"}}></p>
                                     </FormControl>
                                 </Box>

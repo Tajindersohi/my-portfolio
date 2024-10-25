@@ -60,7 +60,7 @@ function Projects() {
                     </div>
                   </Grid>
                   <Grid item xs={12} sm={6}>
-                    <Card className="project-card">
+                    {/* <Card className="project-card"> */}
                       <CardContent>
                         <Typography variant="h5">{project.title}</Typography>
                         <Typography variant="body2" color="textSecondary">
@@ -68,13 +68,13 @@ function Projects() {
                           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit fugiat quidem incidunt et dolor iusto temporibus fugit, exercitationem commodi, saepe, laborum rerum. Culpa minus, dolor quas aspernatur odit esse repellendus. Deleniti pariatur expedita architecto recusandae, minus aspernatur perspiciatis iure numquam soluta esse distinctio corporis voluptatum sed dignissimos ad at molestiae quis culpa iusto ea! Molestias perspiciatis quibusdam illo ipsa odit, dolor fugiat debitis distinctio soluta autem possimus deserunt mollitia voluptatem ratione dolores at alias atque quam laborum iusto blanditiis? Quod dolores culpa earum, at nisi, explicabo numquam asperiores quasi, veniam rem commodi praesentium. Consequuntur ab quas nam quia quo deleniti.
                         </Typography>
                       </CardContent>
-                    </Card>
+                    {/* </Card> */}
                   </Grid>
                 </>
               ) : (
                 <>
                   <Grid item xs={12} sm={6}>
-                    <Card className="project-card">
+                    {/* <Card className="project-card"> */}
                       <CardContent>
                         <Typography variant="h5">{project.title}</Typography>
                         <Typography variant="body2" color="textSecondary">
@@ -82,7 +82,7 @@ function Projects() {
                           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit fugiat quidem incidunt et dolor iusto temporibus fugit, exercitationem commodi, saepe, laborum rerum. Culpa minus, dolor quas aspernatur odit esse repellendus. Deleniti pariatur expedita architecto recusandae, minus aspernatur perspiciatis iure numquam soluta esse distinctio corporis voluptatum sed dignissimos ad at molestiae quis culpa iusto ea! Molestias perspiciatis quibusdam illo ipsa odit, dolor fugiat debitis distinctio soluta autem possimus deserunt mollitia voluptatem ratione dolores at alias atque quam laborum iusto blanditiis? Quod dolores culpa earum, at nisi, explicabo numquam asperiores quasi, veniam rem commodi praesentium. Consequuntur ab quas nam quia quo deleniti.
                         </Typography>
                       </CardContent>
-                    </Card>
+                    {/* </Card> */}
                   </Grid>
                   <Grid item xs={12} sm={6} textAlign="center">
                     <div className="image-container">

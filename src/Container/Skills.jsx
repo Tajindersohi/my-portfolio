@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Box, Typography, LinearProgress, Grid } from '@mui/material';
 
 const skills = [
-  { name: 'JavaScript', level: 80 },
-  { name: 'React', level: 70 },
-  { name: 'Node.js', level: 60 },
-  { name: 'CSS', level: 50 },
-  { name: 'HTML', level: 40 },
+  { name: 'React', level: 95 },
+  { name: 'JavaScript', level: 95 },
+  { name: 'My SQL', level: 95 },
+  { name: 'Express Js', level: 85 },
+  { name: 'Mongo', level: 85 },
+  { name: 'Laravel', level: 85 },
+  { name: 'Git', level: 85 },
 ];
 
 const Skills = ({theme}) => {
@@ -46,7 +48,7 @@ const Skills = ({theme}) => {
               <Box key={skill.name} sx={{ marginBottom: 2, color:theme.textColor }}>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', marginBottom: 3 }}>
                   <Typography variant="body1">{skill.name}</Typography>
-                  <Typography variant="caption">{`${progress[index]}%`}</Typography>
+                  {/* <Typography variant="caption">{`${progress[index]}%`}</Typography> */}
                 </Box>
                 <LinearProgress
                   variant="determinate"
