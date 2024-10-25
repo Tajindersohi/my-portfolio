@@ -52,7 +52,7 @@ function Home() {
                                     height: '100px', // Same as width
                                     borderRadius: '70%',
                                     transition: 'transform 0.3s ease',
-                                    left: '80%',
+                                    left: '75%',
                                     bottom:'100%',
                                     '&:hover': {
                                         transform: 'scale(1.1)',

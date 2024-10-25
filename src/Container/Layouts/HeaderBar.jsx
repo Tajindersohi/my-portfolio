@@ -65,9 +65,9 @@ function HeaderBar({ theme, setTheme, ...props }) {
       <AppBar className="header-container" sx={{ background: theme.type == 'light' ? 'linear-gradient(262deg, #ffffff, #76dce3)' : 'linear-gradient(23deg, black, #ffffff94)', backgroundColor: theme.backgroundColor, justifyContent: 'center', display: 'block' }}>
         <Toolbar sx={{ justifyContent: { md: "center" }}}>
         <Box
-          sx={{ 
+        sx={{ 
         position: 'absolute', 
-        left: { xs: '25%', md: 0 },  // Adjust positioning based on screen size
+        left: { xs: '25%', sm:'-70px', md: '-40px' },  // Adjust positioning based on screen size
       }}>
       <Link
         className={`nav-buttons ${currentRoute === '/' ? 'active' : ''}`}
