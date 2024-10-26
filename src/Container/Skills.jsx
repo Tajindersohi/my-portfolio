@@ -57,7 +57,7 @@ const Skills = ({theme}) => {
                     height: "6px",
                     borderRadius: "5px",
                     backgroundColor: '#708ca7',
-                    '& .MuiLinearProgress-bar': { backgroundColor: '#2a7e38' }
+                    '& .MuiLinearProgress-bar': { backgroundColor: theme.headingColor }
                   }}
                 />
               </Box>

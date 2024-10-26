@@ -49,21 +49,20 @@ function Projects() {
         </Grid>
 
         {projectData.map((project, index) => (
-          <Grid item xs={12} key={project.id}>
+          <Grid item xs={12} mx={3} key={project.id} className={`page-heading ${animate ? 'animate' : ''}`} color={theme.textColor}>
             <Grid container spacing={2} alignItems="center">
               {index % 2 === 0 ? (
                 <>
                   <Grid item xs={12} sm={6} textAlign="center">
                     <div className="image-container">
                       <img className="project-image" src={project.images[0]} alt={project.title} />
-                      {/* <img className="project-image stacked" src={project.images[1]} alt={project.title} /> */}
                     </div>
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     {/* <Card className="project-card"> */}
                       <CardContent>
                         <Typography variant="h5">{project.title}</Typography>
-                        <Typography variant="body2" color="textSecondary">
+                        <Typography variant="body2" color="">
                           {/* {project.description} */}
                           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit fugiat quidem incidunt et dolor iusto temporibus fugit, exercitationem commodi, saepe, laborum rerum. Culpa minus, dolor quas aspernatur odit esse repellendus. Deleniti pariatur expedita architecto recusandae, minus aspernatur perspiciatis iure numquam soluta esse distinctio corporis voluptatum sed dignissimos ad at molestiae quis culpa iusto ea! Molestias perspiciatis quibusdam illo ipsa odit, dolor fugiat debitis distinctio soluta autem possimus deserunt mollitia voluptatem ratione dolores at alias atque quam laborum iusto blanditiis? Quod dolores culpa earum, at nisi, explicabo numquam asperiores quasi, veniam rem commodi praesentium. Consequuntur ab quas nam quia quo deleniti.
                         </Typography>
@@ -77,7 +76,7 @@ function Projects() {
                     {/* <Card className="project-card"> */}
                       <CardContent>
                         <Typography variant="h5">{project.title}</Typography>
-                        <Typography variant="body2" color="textSecondary">
+                        <Typography variant="body2" color="">
                           {/* {project.description} */}
                           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit fugiat quidem incidunt et dolor iusto temporibus fugit, exercitationem commodi, saepe, laborum rerum. Culpa minus, dolor quas aspernatur odit esse repellendus. Deleniti pariatur expedita architecto recusandae, minus aspernatur perspiciatis iure numquam soluta esse distinctio corporis voluptatum sed dignissimos ad at molestiae quis culpa iusto ea! Molestias perspiciatis quibusdam illo ipsa odit, dolor fugiat debitis distinctio soluta autem possimus deserunt mollitia voluptatem ratione dolores at alias atque quam laborum iusto blanditiis? Quod dolores culpa earum, at nisi, explicabo numquam asperiores quasi, veniam rem commodi praesentium. Consequuntur ab quas nam quia quo deleniti.
                         </Typography>

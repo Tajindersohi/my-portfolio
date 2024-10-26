@@ -19,16 +19,6 @@
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.page-heading h4 {
-    font-weight: bolder;
-    font-size: 65px; /* Larger font size for the main heading */
-    margin-bottom: 10px; /* Space between heading and paragraph */
-    letter-spacing: 1px; /* Slight spacing for better readability */
-    opacity: 0;
-    transform: translateY(-30px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
 .page-heading.animate h1 {
     opacity: 1;
     transform: translateY(0);
@@ -107,47 +97,44 @@
 //     align-items: center; /* Centers content vertically */
 // }
 .image-container {
-    position: relative;
-    overflow: hidden;
-    border: 5px solid #ccc; /* Add border */
-    border-radius: 10px; /* Rounded corners */
-  }
+  width: 400px; /* Set desired width */
+  height: 300px; /* Set desired height */
+  perspective: 1000px; /* Gives a sense of depth */
+  overflow: hidden; /* Ensure no overflow from the container */
+  margin: auto;
+}
+
+.project-image {
+  width: 100%; /* Make the image responsive to the container */
+  height: 100%; /* Make the image fill the container */
+  border-radius: 10px; /* Smooth corners */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transformation */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Initial shadow for depth */
+}
+
+.project-image:hover {
+  transform: rotateY(20deg) rotateX(20deg); /* Slight rotation for 3D effect */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+}
+
+.styled-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: grayscale(100%); /* Ensure the image is black and white */
+  position: relative;
+  z-index: 1;
+}
   
-  .styled-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    filter: grayscale(100%); /* Ensure the image is black and white */
-    position: relative;
-    z-index: 1;
-  }
-  
-  .image-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: repeating-linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.1) 0,
-      rgba(255, 255, 255, 0.1) 1px,
-      transparent 1px,
-      transparent 10px
-    );
-    z-index: 2; /* Place lines above the image */
-    pointer-events: none; /* Ensure lines don't interfere with mouse events */
-  }
 
   p{
     font-family: sans-serif;
     color:"#748383";
   }
   p {
-    font-size: 18px !important; /* or 18px */
+    font-size: 20px !important; /* or 18px */
     font-family: 'Roboto', sans-serif !important; /* or 'Merriweather', serif */
-    font-weight: 400 !important; /* or 500 */
+    font-weight: 300 !important; /* or 500 */
     line-height: 1.5 !important; /* or 1.6 */
 }
 
@@ -160,65 +147,6 @@
     transition: background 0.5s ease; /* Smooth transition for the gradient */
 }
 
-
-
-.image-container {
-  position: relative;
-  width: 100%;
-  max-width: 300px; // Set a max width for responsiveness
-  margin: auto; // Center the container
-}
-
-.project-image {
-  width: 100%;
-  border-radius: 8px;
-  transition: transform 0.3s ease;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); // 3D shadow effect
-}
-
-.project-image.stacked {
-  position: absolute;
-  top: 20%; // Adjust this value to control vertical spacing
-  left: 20%; // Adjust this value to control horizontal spacing
-  width: 70%; // Adjust width for the stacked image
-}
-
-.project-image:hover {
-  transform: scale(1.05); // Slightly scale up on hover
-}
-
-.project-card {
-  border: 2px solid transparent;
-  border-radius: 8px;
-  background-clip: padding-box;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
-    // background: linear-gradient(45deg, #ff6b6b, #f0e68c);
-    filter: blur(8px);
-    transform: scale(1.1);
-  }
-
-  &:hover {
-    transform: translateY(-5px);
-  }
-
-  .MuiCardContent-root {
-    position: relative;
-    z-index: 2; // Bring text above gradient
-  }
-  
-}
-
 .bubble {
   opacity: 1; /* Default opacity */
 }
@@ -226,4 +154,9 @@
 .bubble.fade-out {
   opacity: 0; /* Fade-out effect */
 }
+/* Import fonts from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400&display=swap');
 
+.h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif !important; /* For headings */
+}

@@ -64,8 +64,8 @@ const lightTheme = {
 const darkTheme = {
   type: "dark",
   backgroundColor: "#292727",
-  headingColor: "#308d46",
-  subHeadingColor: "#308d46",
+  headingColor: "#90EE90",
+  subHeadingColor: "#90EE90",
   textColor: "#fff",
 };
 
