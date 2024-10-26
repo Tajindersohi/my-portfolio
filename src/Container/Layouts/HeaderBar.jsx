@@ -62,7 +62,7 @@ function HeaderBar({ theme, setTheme, ...props }) {
 
   return (
     <>
-      <AppBar className="header-container" sx={{ background: theme.type == 'light' ? 'linear-gradient(262deg, #ffffff, #76dce3)' : 'linear-gradient(23deg, black, #ffffff94)', backgroundColor: theme.backgroundColor, justifyContent: 'center', display: 'block' }}>
+      <AppBar className="header-container" sx={{ background: theme.type == 'light' ? 'linear-gradient(377deg, #ffffff, #86f7ff36)' : 'linear-gradient(23deg, black, #ffffff94)', backgroundColor: theme.backgroundColor, justifyContent: 'center', display: 'block' }}>
         <Toolbar sx={{ justifyContent: { md: "center" }}}>
         <Box
         sx={{ 
@@ -94,7 +94,7 @@ function HeaderBar({ theme, setTheme, ...props }) {
                 className={`nav-buttons ${currentRoute === item.link ? 'active' : ''}`}
                 to={item.link}
                 key={item.title}
-                style={{color:currentRoute === item.link ? "" :theme.textColor}}
+                style={{color:currentRoute === item.link ? theme.headingColor :theme.textColor}}
               >
                 <b>{item.title}</b>
               </Link>

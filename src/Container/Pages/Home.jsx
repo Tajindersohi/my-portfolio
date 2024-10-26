@@ -1,16 +1,20 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Box, Button, Grid } from '@mui/material';
+import { Box, Button, Grid, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import './style.scss'; // Ensure the image is properly referenced in the SCSS file
 import { ThemeContext } from '../Layouts/GeneralLayout';
 // import lightBgImage from '../../Components/Images/myPic.jpg'
 import yourProfileImage from '../../Components/Images/myPic1.jpg'
+const textArray = ['Tajinder Sohi', "Full Stack Developer", "React Developer"];
 
 function Home() {
     const { theme } = useContext(ThemeContext);
     const [animate, setAnimate] = useState(false);
     const [bubbleShow, setBubbleShow] = useState(true);
-
+	const [currentText, setCurrentText] = useState('');
+	const [textIndex, setTextIndex] = useState(0);
+	const [charIndex, setCharIndex] = useState(0);
+	const [isDeleting, setIsDeleting] = useState(false);
     useEffect(() => {
         // Trigger animation when the component mounts
         setTimeout(() => setAnimate(true), 100);
@@ -24,6 +28,29 @@ function Home() {
         setBubbleShow(false);
         console.log("onMouseOverCapture Event!");
     };
+	useEffect(() => {
+		const delay = isDeleting ? 5 : 50;
+	
+		const typeEffect = () => {
+		const fullText = textArray[textIndex];
+	
+		if (!isDeleting && charIndex < fullText.length) {
+			setCurrentText(fullText.substring(0, charIndex + 1));
+			setCharIndex(charIndex + 1);
+		} else if (isDeleting && charIndex > 0) {
+			setCurrentText(fullText.substring(0, charIndex - 1));
+			setCharIndex(charIndex - 1);
+		} else if (!isDeleting && charIndex === fullText.length) {
+			setTimeout(() => setIsDeleting(true), 1000); // Pause before deleting
+		} else if (isDeleting && charIndex === 0) {
+			setIsDeleting(false);
+			setTextIndex((textIndex + 1) % textArray.length);
+		}
+		};
+	
+		const timer = setTimeout(typeEffect, delay);
+		return () => clearTimeout(timer); // Cleanup timeout on unmount
+	}, [charIndex, isDeleting, textArray, textIndex]);
 
     return (
         <Box alignItems="center" className="home-container">
@@ -31,14 +58,15 @@ function Home() {
                 style={{marginLeft:6, color:theme.textColor ,opacity: animate ? 1 : 0, transition: 'opacity 1s ease-in-out' }} // Apply opacity transition
             >
                 <Grid container pt={2}>
-                    <Grid mt={10} item xs={12} md={6}>
+                    <Grid mt={10} item xs={12} md={7}>
                         <Box className={`page-heading ${animate ? 'animate' : ''}`}>
                             <h4 style={{color:theme.type == "light" ? "#748383" : "#fff", fontSize:"20px",fontWeight:"700"}}>⎯⎯  HELLO</h4>
-                            <h1 style={{color:theme.type == "light" ? "#405151" : "#fff"}}>I❜M <span style={{color:theme.headingColor}}>TAJINDER</span> SOHI</h1>
+                            <Typography variant='h1' sx={{color:theme.type == "light" ? "#405151" : "#fff",fontSize:{xs:'35px !important', sm:'48px !important'}}}>I❜M <span style={{color:theme.headingColor}}>{currentText}</span></Typography>
                             <div className="my-5">
-                                <p style={{color:theme.textColor}}>A Frontend focused Web Developer building Frontend of Websites and Web</p>
-                                <p style={{color:theme.textColor}}>Applications that lead to the success of the overall project</p>
+                                <p style={{color: theme.textColor}}>A Full-Stack Developer crafting seamless web experiences,</p>
+                                <p style={{color: theme.textColor}}>bridging the gap between robust backends and dynamic frontends.</p>
                             </div>
+
                             <Box
                                 component="img"
                                 src={yourProfileImage} // Replace with your first image path
@@ -77,8 +105,28 @@ function Home() {
                                     </Grid>
                                 </Grid>
                             </Box>
+                            <Box className="d-flex gap-6 p-4">
+                                <Box className="f-width mr-5" sx={{ textAlign: 'center' }}>
+                                    <Typography variant="h5" fontWeight={'bold'} sx={{ color: theme.headingColor, mb: 1 }}>
+                                        <b>10+</b>
+                                    </Typography>
+                                    <Typography variant="body2" >
+                                        Successful Endeavors
+                                    </Typography>
+                                </Box>
+                                <Box className="f-width" sx={{ textAlign: 'center' }}>
+                                    <Typography variant="h5" fontWeight={'bold'} sx={{ color: theme.headingColor, mb: 1 }}>
+                                        <b>5+</b>
+                                    </Typography>
+                                    <Typography variant="body2" >
+                                        Completed Projects
+                                    </Typography>
+                                </Box>
+                            </Box>
 
                         </Box>
+                        
+		
                     </Grid>
                     {/* <Grid mt={12} item xs={12} md={5.5} className='image-container'>
                     <Box
@@ -96,7 +144,7 @@ function Home() {
                             }}
                         />
                     </Grid> */}
-                        <Grid ml={2}  textAlign={'-webkit-right'} mt={12} item xs={10} md={5} className='image-ctainer'
+                        <Grid ml={2}  textAlign={'-webkit-right'} mt={12} item xs={10} md={4} className='image-ctainer'
                             sx={{display:{xs:'none',sm:'none', md:'block'}}}
                         >
                             <Box sx={{ position: 'relative', height: '300px', width: '300px' }}>

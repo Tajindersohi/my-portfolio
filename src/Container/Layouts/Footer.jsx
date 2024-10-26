@@ -80,7 +80,10 @@ function Footer({theme}) {
                Shahabad (M.), Haryana, India
             </Typography>
             <Typography variant="body2">
-              Email: tajindersohi1@gmail.com | Phone: +91-9518055232
+               tajindersohi1@gmail.com 
+            </Typography>
+            <Typography variant="body2">
+            +91-9518055232
             </Typography>
           </Box>
         </Grid>

@@ -34,8 +34,8 @@ function About() {
     <Box 
       style={{ textAlign: "center", opacity: animate ? 1 : 0, transition: 'opacity 1s ease-in-out' }} 
       className="primary-color"  sx={{ py: 4 }}>
-<Grid item sx={{ mx: { xs: 2, md: 12 } }} xs={12}>
-    <Typography sx={{ fontWeight: 800 }} mb={6} color={theme.headingColor} variant="h4" component="h4" gutterBottom>
+<Grid item sx={{ mx: { xs: 2, md: 12 } }} xs={12} className={`page-heading ${animate ? 'animate' : ''}`}>
+    <Typography  mb={6} color={theme.headingColor} variant="h4">
         ⎯ About Me
     </Typography>
     <Section color={theme.textColor}>
@@ -49,7 +49,7 @@ function About() {
             I am currently working as a software developer, where I continue to learn and grow in this dynamic field. I am excited about the potential of technology to shape the future and am always looking for opportunities to contribute and innovate.
         </Typography>
     </Section>
-    <Box sx={{ textAlignLast: "start" }}>
+    <Box sx={{ textAlignLast: "end" }}>
         <img style={{ height: "90px" }} src={signature} />
     </Box>
 </Grid>
@@ -79,7 +79,7 @@ function About() {
 
       <Grid container>
         <Grid item xs={12} md={2} mx={3} display="flex" alignItems="center" px={7} justifyContent="flex-end">
-          <VerticalText mr={4} variant="h4" gutterBottom>
+          <VerticalText mr={4} variant="h4" gutterBottom color={theme.headingColor + '!important'}>
             ⎯ My Skills
           </VerticalText>
         </Grid>

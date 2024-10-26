@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Box, Button, FormControl, Grid, outlinedInputClasses, TextField } from '@mui/material';
+import { Box, Button, FormControl, Grid, outlinedInputClasses, TextField, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import './style.scss'; // Ensure the image is properly referenced in the SCSS file
 import { ThemeContext } from '../Layouts/GeneralLayout';
@@ -12,12 +12,16 @@ import { createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
 import Snackbar, { SnackbarCloseReason } from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import LoadingIndicator from '../Common/LoadingIndicator';
+import { contact } from '../../Components/Constants';
+import EmailIcon from '@mui/icons-material/Email';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 // import { Label } from '@mui/icons-material';
 const SubmitButton = styled(Button)(({ theme }) => ({
     color: theme.textColor,
     backgroundColor: "#fff",
     '&:hover': {
-      backgroundColor: "#308d46",
+      backgroundColor: theme.headingColor,
       color:"#fff"
     },
   }));
@@ -197,13 +201,21 @@ const SubmitButton = styled(Button)(({ theme }) => ({
                   <Grid container pt={2}>
                       <Grid mt={12} item xs={12} md={theme.type === "light" ? 6 : 6}>
                         <Box sx={{justifyItems:"center", color:theme.textColor}} className={`page-heading ${animate ? 'animate' : ''}`}>
-                            <h2 style={{color:theme.headingColor}}>⎯ Contact Me</h2>
-                            <div sx={{color:theme.textColor}} className="my-5">
-                                <p>✨ Let's connect and create something extraordinary together!</p>
-                                <p>⎯⎯ 9518055232</p>
-                                <p>⎯⎯ tajindersohi1@gmail.com</p>
-                                <p>⎯⎯ Shahabad(M.), Haryana</p>
-                            </div>
+                            <Typography variant="h4" sx={{color:theme.headingColor}}>⎯ Contact Me</Typography>
+                            <Box sx={{color:theme.textColor}} className="my-5">
+                                <Typography mb={2} color={theme.subHeadingColor}>Ready to embark on an amazing journey together? Get in touch!</Typography>
+                                <Typography><WhatsAppIcon  sx={{cursor:"pointer", color:theme.headingColor}}/>  9518055232</Typography>
+                                <Typography><EmailIcon  sx={{cursor:"pointer", color:theme.headingColor}}/>  tajindersohi1@gmail.com</Typography>
+                                <Typography><LocationOnIcon  sx={{cursor:"pointer", color:theme.headingColor}}/>  Shahabad(M.), Haryana</Typography>
+                            </Box>
+                            		{/* {contact.map((item, key) => (
+                                    <Box className="flex items-center gap-2 mb-2" key={key}>
+                                      {item.icon}
+                                      <Typography variant="body1" {...item.props}>
+                                        {item.label}
+                                      </Typography>
+                                    </Box>
+                                  ))} */}
                         </Box>
                       </Grid>
 
