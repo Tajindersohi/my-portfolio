@@ -14,7 +14,7 @@ import ThemeToggle from '../Common/ThemeToggle';
 import './style.css';
 import logo1 from '../../Components/Images/Image__1_-removebg-preview.svg'
 
-const drawerWidth = 240;
+const drawerWidth = 160;
 const navItems = [
   { title: "Home", link: "/" },
   { title: "About", link: "/about" },
@@ -36,6 +36,9 @@ function HeaderBar({ theme, setTheme, ...props }) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ backgroundColor: theme.backgroundColor,color:theme.textColor, justifyContent: 'center', display: 'block',textAlign: 'center'  }} >
       <List>
+        <ListItem>
+            <img src={logo1} alt='Logo' height="70px" width="100px" />
+        </ListItem>
         {navItems.map((item) => (
           <ListItem key={item.title} disablePadding>
             <ListItemButton sx={{ textAlign: 'center' }}>
@@ -65,27 +68,27 @@ function HeaderBar({ theme, setTheme, ...props }) {
       <AppBar className="header-container" sx={{ background: theme.type == 'light' ? 'linear-gradient(377deg, #ffffff, #86f7ff36)' : 'linear-gradient(23deg, black, #ffffff94)', backgroundColor: theme.backgroundColor, justifyContent: 'center', display: 'block' }}>
         <Toolbar sx={{ justifyContent: { md: "center" }}}>
         <Box
-        sx={{ 
-        position: 'absolute', 
-        left: { xs: '25%', sm:'-70px', md: '-40px' },  // Adjust positioning based on screen size
-      }}>
-      <Link
-        className={`nav-buttons ${currentRoute === '/' ? 'active' : ''}`}
-        to={"/"}
-        style={{ color: theme.textColor }}
-      >
-        {/* <b style={{fontSize:"40px"}}>Tajinder</b> */}
-        <img src={logo1} alt='Logo' height="100px" width="150px" />
-      </Link>
-    </Box>
+            sx={{ 
+              position: 'absolute', 
+              display :{xs:'none',sm:'none',md:'block'},
+              left: { xs: '25%', sm:'-70px', md: '-40px' },  // Adjust positioning based on screen size
+            }}>
+          <Link
+            className={`nav-buttons ${currentRoute === '/' ? 'active' : ''}`}
+            to={"/"}
+            style={{ color: theme.textColor }}
+          >
+            {/* <b style={{fontSize:"40px"}}>Tajinder</b> */}
+            <img src={logo1} alt='Logo' height="100px" width="150px" />
+          </Link>
+        </Box>
           <IconButton
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            color={theme.textColor}
-            sx={{ mr: 2, display: { sm: 'none' } }}
+            sx={{ mr: 2, display: { sm: 'none' }, color:theme.textColor}}
           >
-            <MenuIcon />
+            <MenuIcon color={theme.textColor+'!important'}/>
           </IconButton>
 
           <Box sx={{ display: { xs: 'none', sm: 'block' }, px: 4 }}>
@@ -113,9 +116,10 @@ function HeaderBar({ theme, setTheme, ...props }) {
         ModalProps={{
           keepMounted: true,
         }}
+        
         sx={{
           display: { xs: 'block', sm: 'none' },
-          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+          '& .MuiDrawer-paper': {width: drawerWidth,backgroundColor:theme.backgroundColor},
         }}
       >
         {drawer}

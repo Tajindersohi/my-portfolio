@@ -7,7 +7,7 @@
     transform: translateY(0);
 }
 
-.page-heading h1 {
+.page-heading h1,h4 {
     font-weight: bolder;
     font-size: 65px; /* Larger font size for the main heading */
     margin-bottom: 10px; /* Space between heading and paragraph */
@@ -19,7 +19,7 @@
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.page-heading.animate h1 {
+.page-heading.animate h1,h4 {
     opacity: 1;
     transform: translateY(0);
 }

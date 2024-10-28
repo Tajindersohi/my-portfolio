@@ -68,22 +68,22 @@ function Footer({theme}) {
 
         <Grid item xs={12} sm={2}>
           <Box textAlign="center">
-            <Typography variant="body2" sx={{pb:1}}>
+            <Typography fontSize={'15px !important'} variant="body2" sx={{pb:1}}>
               &copy; {new Date().getFullYear()}  All rights reserved.
             </Typography>
           </Box>
         </Grid>
 
-        <Grid item xs={12} sm={4} mr={1}>
+        <Grid  fontSize={'15px !important'} item xs={12} sm={4} mr={1}>
           <Box textAlign={{ xs: 'center', sm: 'right' }}>
-            <Typography variant="body2">
+            <Typography fontSize={'15px !important'} variant="body2">
                Shahabad (M.), Haryana, India
             </Typography>
-            <Typography variant="body2">
+            <Typography fontSize={'15px !important'} variant="body2">
                tajindersohi1@gmail.com 
             </Typography>
-            <Typography variant="body2">
-            +91-9518055232
+            <Typography fontSize={'15px !important'} variant="body2">
+               +91-9518055232
             </Typography>
           </Box>
         </Grid>
