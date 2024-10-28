@@ -1,6 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
 import whiteBgImage from '../../Components/Images/whiteBlueBg.jpg'; // Ensure the correct path to your image
-// import whiteBgImage from '../../Components/Images/whiteBg.jpg'; // Ensure the correct path to your image
 import blackBgImage from '../../Components/Images/blackBgImage.jpg'; // Ensure the correct path to your image
 import { Outlet, useLocation } from 'react-router-dom';
 import Box from '@mui/material/Box';
@@ -27,6 +26,23 @@ function GeneralLayout() {
   const location = useLocation();
 
   useEffect(() => {
+    const mytheme = localStorage.getItem('myTheme');
+    if(mytheme){
+      setTheme(JSON.parse(mytheme));
+    }else{
+      setTheme({
+        type: "light",
+        backgroundColor: "#fff",
+        headingColor: "#1b5e20",
+        subHeadingColor: "#1b5e20",
+        textColor: "#1612129e",
+        // textColor: "#777676",
+        activeColor:"#308d46",
+        hoverColor:"#308d46"
+      });
+      localStorage.setItem('myTheme',JSON.stringify(theme))
+    }
+
     window.scrollTo(0, 0);
   }, [location]);
 

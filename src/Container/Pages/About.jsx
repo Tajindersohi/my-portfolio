@@ -17,8 +17,8 @@ const VerticalText = styled(Typography)(({ theme }) => ({
 
   // Change to horizontal on small screens
   [theme.breakpoints.down('sm')]: {
-    writingMode: 'horizontal-tb', // Horizontal text on small screens
-    transform: 'none', // No rotation for horizontal text
+    writingMode: 'horizontal-tb', 
+    transform: 'none', 
   },
 }));
 

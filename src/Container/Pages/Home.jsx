@@ -61,7 +61,7 @@ function Home() {
                     <Grid mt={10} item xs={12} md={7}>
                         <Box className={`page-heading ${animate ? 'animate' : ''}`}>
                             <h4 style={{color:theme.type == "light" ? "#748383" : "#fff", fontSize:"20px",fontWeight:"700"}}>⎯⎯  HELLO</h4>
-                            <Typography variant='h1' sx={{color:theme.type == "light" ? "#405151" : "#fff",fontSize:{xs:'35px !important', sm:'48px !important'}}}>I❜M <span style={{color:theme.headingColor}}>{currentText}</span></Typography>
+                            <Typography variant='h1' sx={{color:theme.type == "light" ? "#405151" : "#fff",fontSize:{xs:'26px !important', sm:'48px !important'}}}>I❜M <span style={{color:theme.headingColor}}>{currentText}</span></Typography>
                             <div className="my-5">
                                 <p style={{color: theme.textColor}}>A Full-Stack Developer crafting seamless web experiences,</p>
                                 <p style={{color: theme.textColor}}>bridging the gap between robust backends and dynamic frontends.</p>
@@ -80,7 +80,7 @@ function Home() {
                                     height: '100px', // Same as width
                                     borderRadius: '70%',
                                     transition: 'transform 0.3s ease',
-                                    left: '75%',
+                                    left: {xs:'70%',sm:'85%'},
                                     bottom:'100%',
                                     '&:hover': {
                                         transform: 'scale(1.1)',
@@ -90,12 +90,12 @@ function Home() {
                             <Box my={5} textAlign={'left'}>
                                 <Grid container spacing={2} justifyContent="left">
                                     <Grid item xs={6} sm={4}> {/* Change sm={6} to sm={4} */}
-                                        <a style={{ width: '100%' }} href="/Pdf/TajinderResume.pdf" className="project-button text-center" download>
+                                        <a style={{ width: '80%' }} href="/Pdf/TajinderResume.pdf" className="project-button text-center" download>
                                             Download CV
                                         </a>
                                     </Grid>
                                     <Grid item xs={6} sm={4}> {/* Change sm={6} to sm={4} */}
-                                        <Link to="/projects" className="project-button text-center" style={{ width: '100%' }}>
+                                        <Link to="/projects" className="project-button text-center" style={{ width: '80%' }}>
                                             <span className='pr-2'>Projects</span>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" fill="currentColor" className="bi bi-box-arrow-up-right" viewBox="2 0 18 18">
                                                 <path fillRule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5"/>
@@ -108,7 +108,7 @@ function Home() {
                             <Box className="d-flex gap-6 p-4">
                                 <Box className="f-width mr-5" sx={{ textAlign: 'center' }}>
                                     <Typography variant="h5" fontWeight={'bold'} sx={{ color: theme.headingColor, mb: 1 }}>
-                                        <b>10+</b>
+                                    <img width="28" height="28" src="https://img.icons8.com/ios-filled/50/1b5e20/project.png" alt="project"/><b className='ml-2'>10+</b>
                                     </Typography>
                                     <Typography variant="body2" >
                                         Successful Endeavors
@@ -116,7 +116,7 @@ function Home() {
                                 </Box>
                                 <Box className="f-width" sx={{ textAlign: 'center' }}>
                                     <Typography variant="h5" fontWeight={'bold'} sx={{ color: theme.headingColor, mb: 1 }}>
-                                        <b>5+</b>
+                                    <img width="28" height="28" src="https://img.icons8.com/ios-filled/50/1b5e20/project.png" alt="project"/><b className='ml-2'>5+</b>
                                     </Typography>
                                     <Typography variant="body2" >
                                         Completed Projects
