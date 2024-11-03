@@ -1,4 +1,4 @@
-import { Box, Grid, Card, CardContent, Typography } from '@mui/material';
+import { Box, Grid, Typography, Paper, List, ListItem, ListItemText } from '@mui/material';
 import React, { useContext, useEffect, useState } from 'react';
 import './style.scss'; // Ensure to import your CSS file for styles
 import lightBgImage from '../../Components/Images/971.jpg';
@@ -10,7 +10,7 @@ const projectData = [
     id: 1,
     title: "Project One",
     description: "Description for Project One.",
-    images: [lightBgImage, secondImage] // Use an array for multiple images
+    images: [lightBgImage, secondImage]
   },
   {
     id: 2,
@@ -31,69 +31,89 @@ function Projects() {
   const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
-    // Trigger animation when the component mounts
     setTimeout(() => setAnimate(true), 100); // Delay to ensure the animation plays
   }, []);
 
   return (
-    <Box>
-      <Grid container spacing={4} mt={4}>
+    <Box sx={{ padding: 4, backgroundColor: theme.background, minHeight: '100vh' }}>
+      <Grid container spacing={4}>
         <Grid item xs={12} textAlign="center">
-          <Box 
-            style={{ opacity: animate ? 1 : 0, transition: 'opacity 1s ease-in-out' }} 
-          >
-          <Typography sx={{ fontWeight: 800 }} mb={6} color={theme.headingColor} variant="h4" component="h4" gutterBottom>
+          <Typography sx={{ fontWeight: 800, color: theme.headingColor }} variant="h4" gutterBottom>
             ⎯ Projects
           </Typography>
-          </Box>
         </Grid>
 
-        {projectData.map((project, index) => (
-          <Grid item xs={12} mx={3} key={project.id} className={`page-heading ${animate ? 'animate' : ''}`} color={theme.textColor}>
-            <Grid container spacing={2} alignItems="center">
-              {index % 2 === 0 ? (
-                <>
-                  <Grid item xs={12} sm={6} textAlign="center">
-                    <div className="image-container">
-                      <img className="project-image" src={project.images[0]} alt={project.title} />
-                    </div>
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    {/* <Card className="project-card"> */}
-                      <CardContent>
-                        <Typography variant="h5">{project.title}</Typography>
-                        <Typography variant="body2" color="">
-                          {/* {project.description} */}
-                          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit fugiat quidem incidunt et dolor iusto temporibus fugit, exercitationem commodi, saepe, laborum rerum. Culpa minus, dolor quas aspernatur odit esse repellendus. Deleniti pariatur expedita architecto recusandae, minus aspernatur perspiciatis iure numquam soluta esse distinctio corporis voluptatum sed dignissimos ad at molestiae quis culpa iusto ea! Molestias perspiciatis quibusdam illo ipsa odit, dolor fugiat debitis distinctio soluta autem possimus deserunt mollitia voluptatem ratione dolores at alias atque quam laborum iusto blanditiis? Quod dolores culpa earum, at nisi, explicabo numquam asperiores quasi, veniam rem commodi praesentium. Consequuntur ab quas nam quia quo deleniti.
-                        </Typography>
-                      </CardContent>
-                    {/* </Card> */}
-                  </Grid>
-                </>
-              ) : (
-                <>
-                  <Grid item xs={12} sm={6}>
-                    {/* <Card className="project-card"> */}
-                      <CardContent>
-                        <Typography variant="h5">{project.title}</Typography>
-                        <Typography variant="body2" color="">
-                          {/* {project.description} */}
-                          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit fugiat quidem incidunt et dolor iusto temporibus fugit, exercitationem commodi, saepe, laborum rerum. Culpa minus, dolor quas aspernatur odit esse repellendus. Deleniti pariatur expedita architecto recusandae, minus aspernatur perspiciatis iure numquam soluta esse distinctio corporis voluptatum sed dignissimos ad at molestiae quis culpa iusto ea! Molestias perspiciatis quibusdam illo ipsa odit, dolor fugiat debitis distinctio soluta autem possimus deserunt mollitia voluptatem ratione dolores at alias atque quam laborum iusto blanditiis? Quod dolores culpa earum, at nisi, explicabo numquam asperiores quasi, veniam rem commodi praesentium. Consequuntur ab quas nam quia quo deleniti.
-                        </Typography>
-                      </CardContent>
-                    {/* </Card> */}
-                  </Grid>
-                  <Grid item xs={12} sm={6} textAlign="center">
-                    <div className="image-container">
-                      <img className="project-image" src={project.images[0]} alt={project.title} />
-                      {/* <img className="project-image stacked" src={project.images[1]} alt={project.title} /> */}
-                    </div>
-                  </Grid>
-                </>
-              )}
+        <Grid item xs={12} className={`page-heading ${animate ? 'animate' : ''}`} color={theme.textColor}>
+          <Grid container spacing={2} alignItems="center">
+            <Grid item xs={12}>
+                <Typography variant="h5" component="h2">1. TypoMaster</Typography>
+
+                <Typography variant="h6" component="h3" mt={2}>Description:</Typography>
+                <Typography variant="body1" paragraph>
+                  Welcome to TypoMaster, the ultimate typing speed game designed to enhance your typing skills while having fun! Challenge yourself across multiple difficulty modes—Easy, Normal, and Hard—and track your progress as you race against the clock.
+                </Typography>
+
+                <Typography variant="h6" component="h3" mt={2}>Features:</Typography>
+                <List>
+                  <ListItem>
+                    <ListItemText 
+                      primary={<strong>Multiple Difficulty Levels:</strong>} 
+                      secondary={
+                        <List>
+                          <ListItem><ListItemText primary={<strong>Easy</strong>} secondary="Perfect for beginners, featuring simple words and short phrases to help you build confidence." /></ListItem>
+                          <ListItem><ListItemText primary={<strong>Normal</strong>} secondary="A balanced challenge that introduces more complex vocabulary and longer sentences to test your skills." /></ListItem>
+                          <ListItem><ListItemText primary={<strong>Hard</strong>} secondary="For seasoned typists, this mode features intricate sentences and advanced vocabulary that will push your limits!" /></ListItem>
+                        </List>
+                      } 
+                    />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText 
+                      primary={<strong>Real-Time Speed Tracking:</strong>} 
+                      secondary="As you type, watch your speed in words per minute (WPM) update in real time. Get instant feedback on your performance!" 
+                    />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText 
+                      primary={<strong>Comprehensive Results:</strong>} 
+                      secondary={
+                        <List>
+                          <ListItem><ListItemText primary="Typing speed (WPM)" /></ListItem>
+                          <ListItem><ListItemText primary="Accuracy percentage" /></ListItem>
+                          <ListItem><ListItemText primary="Number of errors made" /></ListItem>
+                          <ListItem><ListItemText primary="Comparison with previous scores to track your improvement over time" /></ListItem>
+                        </List>
+                      } 
+                    />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText 
+                      primary={<strong>Engaging Challenges:</strong>} 
+                      secondary="Participate in timed challenges and set personal records. Compete against friends or climb the global leaderboard!" 
+                    />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText 
+                      primary={<strong>User-Friendly Interface:</strong>} 
+                      secondary="Enjoy a clean and intuitive design that makes typing easy and enjoyable. With minimal distractions, you can focus solely on improving your skills." 
+                    />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText 
+                      primary={<strong>Practice Mode:</strong>} 
+                      secondary="Not ready for a challenge? Use the practice mode to hone your skills at your own pace, with no time limits." 
+                    />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText 
+                      primary={<strong>Fun Themes and Backgrounds:</strong>} 
+                      secondary="Customize your gaming experience with various themes and backgrounds to make each session unique." 
+                    />
+                  </ListItem>
+                </List>
             </Grid>
           </Grid>
-        ))}
+        </Grid>
       </Grid>
     </Box>
   );

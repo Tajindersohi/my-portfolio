@@ -26,7 +26,6 @@ function Home() {
 
     const onMouseOverCaptureHandler = () => {
         setBubbleShow(false);
-        console.log("onMouseOverCapture Event!");
     };
 	useEffect(() => {
 		const delay = isDeleting ? 5 : 50;
@@ -54,8 +53,8 @@ function Home() {
 
     return (
         <Box alignItems="center" className="home-container">
-            <Box height={600} className="m-4"
-                style={{marginLeft:6, color:theme.textColor ,opacity: animate ? 1 : 0, transition: 'opacity 1s ease-in-out' }} // Apply opacity transition
+            <Box height={600} className=""
+                style={{color:theme.textColor ,opacity: animate ? 1 : 0, transition: 'opacity 1s ease-in-out' }} // Apply opacity transition
             >
                 <Grid container pt={2}>
                     <Grid mt={10} item xs={12} md={7}>
@@ -89,12 +88,12 @@ function Home() {
                             />
                             <Box my={5} textAlign={'left'}>
                                 <Grid container spacing={2} justifyContent="left">
-                                    <Grid item xs={6} sm={4}> {/* Change sm={6} to sm={4} */}
+                                    <Grid item xs={12} sm={12} md={4} textAlign={'center'}> {/* Change sm={6} to sm={4} */}
                                         <a style={{ width: '80%' }} href="/Pdf/TajinderResume.pdf" className="project-button text-center" download>
                                             Download CV
                                         </a>
                                     </Grid>
-                                    <Grid item xs={6} sm={4}> {/* Change sm={6} to sm={4} */}
+                                    <Grid item xs={12} sm={12} md={4} textAlign={'center'}> {/* Change sm={6} to sm={4} */}
                                         <Link to="/projects" className="project-button text-center" style={{ width: '80%' }}>
                                             <span className='pr-2'>Projects</span>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" fill="currentColor" className="bi bi-box-arrow-up-right" viewBox="2 0 18 18">

@@ -64,7 +64,7 @@ function GeneralLayout() {
 
         <Grid container spacing={8}>
           <Grid item mt={5} xs={12}>
-            <Box className="main-body" sx={{mb: 12 ,pt: 5 }}>
+            <Box className="main-body" sx={{px:7,mb: 12 ,pt: 5 }}>
               <Outlet /> {/* Child routes can access both theme and setTheme */}
             </Box>
           </Grid>

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Box, Button, FormControl, Grid, outlinedInputClasses, TextField, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import './style.scss'; // Ensure the image is properly referenced in the SCSS file
@@ -119,6 +119,7 @@ const SubmitButton = styled(Button)(({ theme }) => ({
       })
       const [open, setOpen] = React.useState(false);
       const [submit, setSubmit] = React.useState(false);
+      const formRef = useRef(null);
 
       const handleClick = () => {
         setOpen(true)
@@ -133,20 +134,39 @@ const SubmitButton = styled(Button)(({ theme }) => ({
           setTimeout(() => setAnimate(true), 100);
       }, []);
 
-          
       const onSubmit = async (event) => {
         event.preventDefault();
         if(error.length > 0){
           for(let i=0; i< error.length; i++){
-            document.getElementById(error[i]).innerText = error[i].replace('Error', ' ').slice(0,1).toUpperCase()+  error[i].replace('Error', ' ').slice(1, error[i].replace('Error', ' ').length) +"is Required";
+            // document.getElementById(error[i]).innerText = error[i].replace('Error', ' ').slice(0,1).toUpperCase()+  error[i].replace('Error', ' ').slice(1, error[i].replace('Error', ' ').length) +"is Required";
+            document.getElementById(error[i]).innerText = "This field is required";
+          }
+          return;
+        }
+        const formData = new FormData(event.target);
+        let validationError = [];
+
+        for (let [key, value] of formData.entries()) {
+          if((key =='email' && !validateEmail(value))){
+            validationError.push('email');
+          }
+          if(key =='phone' && (value.length > 10 || value.length < 10)){
+            validationError.push('phone');
+          }
+        }
+
+        if(validationError.length > 0){
+          if(validationError.includes('email')){
+            document.getElementById('emailError').innerText='Enter a valid email';
+          }
+          if(validationError.includes('phone')){
+            document.getElementById('phoneError').innerText='Enter a valid number';
           }
           return;
         }
         setSubmit(true)
 
-        const formData = new FormData(event.target);
-
-        formData.append("access_key", "e5a9d894-4468-42e6-b8cb-9b3309a5ef5a");
+        formData.append("access_key", process.env.REACT_APP_API_KEY);
 
         const response = await fetch("https://api.web3forms.com/submit", {
           method: "POST",
@@ -156,7 +176,7 @@ const SubmitButton = styled(Button)(({ theme }) => ({
         const data = await response.json();
 
         if (data.success) {
-          event.target.reset();
+          formRef.current.reset();
           setOpen(true);
           setSubmit(false)
         } else {
@@ -165,6 +185,12 @@ const SubmitButton = styled(Button)(({ theme }) => ({
           setSubmit(false)
         }
       };
+
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+      function validateEmail(email) {
+          return emailRegex.test(email);
+      }
 
       const handleChange = (type,val) => {
           document.getElementById(type+"Error").innerText = "";
@@ -181,7 +207,7 @@ const SubmitButton = styled(Button)(({ theme }) => ({
             {submit ? 
                 <LoadingIndicator message='Submitting...'/>
                 :
-              <Box height={600} className="pl-4"
+              <Box height={600} className=""
               sx={{ mb: { xs: "400px", md:0 } }}
                 style={{ opacity: animate ? 1 : 0, transition: 'opacity 1s ease-in-out' }} // Apply opacity transition
               >
@@ -202,11 +228,11 @@ const SubmitButton = styled(Button)(({ theme }) => ({
                       <Grid mt={12} item xs={12} md={theme.type === "light" ? 6 : 6}>
                         <Box sx={{justifyItems:"center", color:theme.textColor}} className={`page-heading ${animate ? 'animate' : ''}`}>
                             <Typography variant="h4" sx={{color:theme.headingColor}}>⎯ Contact Me</Typography>
-                            <Box sx={{color:theme.textColor}} className="my-5">
-                                <Typography mb={2} color={theme.subHeadingColor}>Ready to embark on an amazing journey together? Get in touch!</Typography>
-                                <Typography><WhatsAppIcon  sx={{cursor:"pointer", color:theme.headingColor}}/>  9518055232</Typography>
-                                <Typography><EmailIcon  sx={{cursor:"pointer", color:theme.headingColor}}/>  tajindersohi1@gmail.com</Typography>
-                                <Typography><LocationOnIcon  sx={{cursor:"pointer", color:theme.headingColor}}/>  Shahabad(M.), Haryana</Typography>
+                            <Box sx={{color:theme.textColor}} className="my-5 py-2">
+                                <Typography mb={4} color={theme.subHeadingColor}>Ready to embark on an amazing journey together? Get in touch!</Typography>
+                                <Typography mb={2}><WhatsAppIcon  sx={{cursor:"pointer", color:theme.headingColor}}/>  9518055232</Typography>
+                                <Typography mb={2}><EmailIcon  sx={{cursor:"pointer", color:theme.headingColor}}/>  tajindersohi1@gmail.com</Typography>
+                                <Typography mb={2}><LocationOnIcon  sx={{cursor:"pointer", color:theme.headingColor}}/>  Shahabad(M.), Haryana</Typography>
                             </Box>
                             		{/* {contact.map((item, key) => (
                                     <Box className="flex items-center gap-2 mb-2" key={key}>
@@ -220,10 +246,10 @@ const SubmitButton = styled(Button)(({ theme }) => ({
                       </Grid>
 
                       <Grid mt={12} item xs={12} md={6}>
-                          <Box width={'90%'} margin={'auto'}>
-                          <form onSubmit={onSubmit}>
+                          <Box width={'80%'} margin={'auto'}>
+                          <form ref={formRef} onSubmit={onSubmit}>
                               <ThemeProvider theme={customTheme(outerTheme, theme)}>
-                                <Box display={'flex'} gap={8} >
+                                <Box display={'flex'} justifyContent={'space-between'} gap={2} >
                                 <FormControl defaultValue="" sx={{ width: '300px' }} required>
                                   <TextField
                                       sx={{ color: theme.textColor }}
@@ -234,41 +260,46 @@ const SubmitButton = styled(Button)(({ theme }) => ({
                                       name="firstname"
                                       variant="standard"
                                   />
-                                  <p id="firstNameError" className='text-danger' style={{ color: "red" }}></p>
-                              </FormControl>
+                                  <p id="firstNameError" className='text-danger' style={{ fontSize: "13px" }}></p>
+                                </FormControl>
 
                                 <FormControl defaultValue="" sx={{width:'300px'}} required>
                                     <TextField id="standard-basic" 
                                     label={<span>Last Name <span style={{ color: 'red' }}>*</span></span>}
                                     name="lastname" value={data.lastName} onChange={(e)=>handleChange("lastName",e.target.value)} variant="standard" />
-                                    <p id="lastNameError" className='text-danger' style={{color:"red"}}></p>
+                                    <p id="lastNameError" className='text-danger' style={{color:"red",fontSize:'13px !important'}}></p>
                                 </FormControl>
                                 </Box>
-                                <Box display={'flex'} gap={8} mt={5}>
+                                <Box display={'flex'} justifyContent={'space-between'} gap={2} mt={5}>
                                 <FormControl defaultValue="" sx={{width:'300px'}} required>
                                     <TextField id="standard-basic" 
                                     label={<span>Email<span style={{ color: 'red' }}>*</span></span>}
                                     name="email" value={data.email} onChange={(e)=>handleChange("email",e.target.value)} variant="standard" />
-                                    <p id="emailError" className='text-danger'style={{color:"red"}}></p>
+                                    <p id="emailError" className='text-danger'style={{color:"red",fontSize:'13px !important'}}></p>
                                 </FormControl>
                                 <FormControl defaultValue="" sx={{width:'300px'}} required>
                                     <TextField id="standard-basic" 
                                     label={<span>Phone<span style={{ color: 'red' }}>*</span></span>}
                                     name="phone" value={data.phone} onChange={(e)=>handleChange("phone",e.target.value)} variant="standard" />
-                                    <p id="phoneError" className='text-danger' style={{color:"red"}}></p>
+                                    <p id="phoneError" className='text-danger' style={{color:"red",fontSize:'13px !important'}}></p>
                                 </FormControl>
                                 </Box>
-                                <Box mt={5}>
+                                <Box mt={5} gap={2} display={'flex'} justifyContent={'space-between'}>
                                     <FormControl defaultValue="" sx={{width:'300px'}}required>
                                         <TextField id="standard-basic" 
                                         label={<span>Leave a message<span style={{ color: 'red' }}>*</span></span>}
                                         name="message" onChange={(e)=>handleChange("message",e.target.value)} value={data.message} variant="standard" sx={{width:"100%"}}/>
-                                        <p id="messageError" className='text-danger' style={{color:"red"}}></p>
+                                        <p id="messageError" className='text-danger' style={{color:"red",fontSize:'13px !important'}}></p>
+                                    </FormControl>
+                                    <FormControl defaultValue="" sx={{width:'300px'}}required>
                                     </FormControl>
                                 </Box>
-                                <Box mt={5} textAlign={'end'}>
+                                <Box mt={5} gap={2} display={'flex'} justifyContent={'end'}>
                                     <SubmitButton type="submit" theme={theme} variant="outlined" mt={5} sx={{color:'black', border:'1px solid black'}}>Submit</SubmitButton>
                                 </Box>
+                                {/* <Box mt={5} textAlign={'end'}>
+                                    <SubmitButton type="submit" theme={theme} variant="outlined" mt={5} sx={{color:'black', border:'1px solid black'}}>Submit</SubmitButton>
+                                </Box> */}
                               </ThemeProvider>
                               </form>
                           </Box>
