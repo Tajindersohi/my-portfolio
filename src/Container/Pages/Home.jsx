@@ -5,6 +5,7 @@ import './style.scss'; // Ensure the image is properly referenced in the SCSS fi
 import { ThemeContext } from '../Layouts/GeneralLayout';
 // import lightBgImage from '../../Components/Images/myPic.jpg'
 import yourProfileImage from '../../Components/Images/myPic1.jpg'
+import BarChartIcon from '@mui/icons-material/BarChart';
 const textArray = ['Tajinder Sohi', "Full Stack Developer", "React Developer"];
 
 function Home() {
@@ -26,7 +27,6 @@ function Home() {
 
     const onMouseOverCaptureHandler = () => {
         setBubbleShow(false);
-        console.log("onMouseOverCapture Event!");
     };
 	useEffect(() => {
 		const delay = isDeleting ? 5 : 50;
@@ -54,8 +54,8 @@ function Home() {
 
     return (
         <Box alignItems="center" className="home-container">
-            <Box height={600} className="m-4"
-                style={{marginLeft:6, color:theme.textColor ,opacity: animate ? 1 : 0, transition: 'opacity 1s ease-in-out' }} // Apply opacity transition
+            <Box height={600} className=""
+                style={{color:theme.textColor ,opacity: animate ? 1 : 0, transition: 'opacity 1s ease-in-out' }} // Apply opacity transition
             >
                 <Grid container pt={2}>
                     <Grid mt={10} item xs={12} md={7}>
@@ -89,12 +89,12 @@ function Home() {
                             />
                             <Box my={5} textAlign={'left'}>
                                 <Grid container spacing={2} justifyContent="left">
-                                    <Grid item xs={6} sm={4}> {/* Change sm={6} to sm={4} */}
+                                    <Grid item xs={12} sm={12} md={4} textAlign={'center'}> {/* Change sm={6} to sm={4} */}
                                         <a style={{ width: '80%' }} href="/Pdf/TajinderResume.pdf" className="project-button text-center" download>
                                             Download CV
                                         </a>
                                     </Grid>
-                                    <Grid item xs={6} sm={4}> {/* Change sm={6} to sm={4} */}
+                                    <Grid item xs={12} sm={12} md={4} textAlign={'center'}> {/* Change sm={6} to sm={4} */}
                                         <Link to="/projects" className="project-button text-center" style={{ width: '80%' }}>
                                             <span className='pr-2'>Projects</span>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" fill="currentColor" className="bi bi-box-arrow-up-right" viewBox="2 0 18 18">
@@ -108,7 +108,9 @@ function Home() {
                             <Box className="d-flex gap-6 p-4">
                                 <Box className="f-width mr-5" sx={{ textAlign: 'center' }}>
                                     <Typography variant="h5" fontWeight={'bold'} sx={{ color: theme.headingColor, mb: 1 }}>
-                                    <img width="28" height="28" src="https://img.icons8.com/ios-filled/50/1b5e20/project.png" alt="project"/><b className='ml-2'>10+</b>
+                                    <BarChartIcon/>
+                                    {/* <img width="28" height="28" src="https://img.icons8.com/ios-filled/50/project.png" alt="project"/> */}
+                                    <b className='ml-2'>10+</b>
                                     </Typography>
                                     <Typography variant="body2" >
                                         Successful Endeavors
@@ -116,7 +118,9 @@ function Home() {
                                 </Box>
                                 <Box className="f-width" sx={{ textAlign: 'center' }}>
                                     <Typography variant="h5" fontWeight={'bold'} sx={{ color: theme.headingColor, mb: 1 }}>
-                                    <img width="28" height="28" src="https://img.icons8.com/ios-filled/50/1b5e20/project.png" alt="project"/><b className='ml-2'>5+</b>
+                                    <BarChartIcon/>
+                                    {/* <img width="28" height="28" src="https://img.icons8.com/ios-filled/50/project.png" alt="project"/> */}
+                                    <b className='ml-2'>5+</b>
                                     </Typography>
                                     <Typography variant="body2" >
                                         Completed Projects

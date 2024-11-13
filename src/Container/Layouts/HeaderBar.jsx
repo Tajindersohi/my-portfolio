@@ -12,9 +12,10 @@ import Toolbar from '@mui/material/Toolbar';
 import { useLocation, Link } from 'react-router-dom';
 import ThemeToggle from '../Common/ThemeToggle';
 import './style.css';
-import logo1 from '../../Components/Images/Image__1_-removebg-preview.svg'
+// import logo1 from '../../Components/Images/Image__1_-removebg-preview.svg'
+import logo1 from '../../Components/Images/Image (1).png'
 
-const drawerWidth = 160;
+const drawerWidth = 200;
 const navItems = [
   { title: "Home", link: "/" },
   { title: "About", link: "/about" },
@@ -36,12 +37,12 @@ function HeaderBar({ theme, setTheme, ...props }) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ backgroundColor: theme.backgroundColor,color:theme.textColor, justifyContent: 'center', display: 'block',textAlign: 'center'  }} >
       <List>
-        <ListItem>
-            <img src={logo1} alt='Logo' height="70px" width="100px" />
+        <ListItem sx={{justifyContent:'center', padding:'5px'}}>
+            <img src={logo1} alt='Logo' height="70px" width="100px"/>
         </ListItem>
         {navItems.map((item) => (
-          <ListItem key={item.title} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
+          <ListItem key={item.title} disablePadding sx={{justifyContent:'center'}}>
+            <ListItemButton sx={{ justifyContent: 'center', padding:'5px' }}>
               <Link
                   className={`nav-buttons ${currentRoute === item.link ? 'active' : ''}`}
                   to={item.link}
@@ -65,7 +66,7 @@ function HeaderBar({ theme, setTheme, ...props }) {
 
   return (
     <>
-      <AppBar className="header-container" sx={{ background: theme.type == 'light' ? 'linear-gradient(377deg, #ffffff, #86f7ff36)' : 'linear-gradient(23deg, black, #ffffff94)', backgroundColor: theme.backgroundColor, justifyContent: 'center', display: 'block' }}>
+      <AppBar className="header-container" sx={{px:2, background: theme.type == 'light' ? 'linear-gradient(377deg, #ffffff, #86f7ff36)' : 'linear-gradient(23deg, black, #ffffff94)', backgroundColor: theme.backgroundColor, justifyContent: 'center', display: 'block' }}>
         <Toolbar sx={{ justifyContent: { md: "center" }}}>
         <Box
             sx={{ 
@@ -79,8 +80,8 @@ function HeaderBar({ theme, setTheme, ...props }) {
             style={{ color: theme.textColor }}
           >
             {/* <b style={{fontSize:"40px"}}>Tajinder</b> */}
-            <img src={logo1} alt='Logo' height="100px" width="150px" />
-          </Link>
+            <img src={logo1}  alt='Logo' height="100px" width="150px"/>
+            </Link>
         </Box>
           <IconButton
             aria-label="open drawer"
