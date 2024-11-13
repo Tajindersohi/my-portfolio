@@ -5,6 +5,7 @@ import './style.scss'; // Ensure the image is properly referenced in the SCSS fi
 import { ThemeContext } from '../Layouts/GeneralLayout';
 // import lightBgImage from '../../Components/Images/myPic.jpg'
 import yourProfileImage from '../../Components/Images/myPic1.jpg'
+import BarChartIcon from '@mui/icons-material/BarChart';
 const textArray = ['Tajinder Sohi', "Full Stack Developer", "React Developer"];
 
 function Home() {
@@ -107,7 +108,9 @@ function Home() {
                             <Box className="d-flex gap-6 p-4">
                                 <Box className="f-width mr-5" sx={{ textAlign: 'center' }}>
                                     <Typography variant="h5" fontWeight={'bold'} sx={{ color: theme.headingColor, mb: 1 }}>
-                                    <img width="28" height="28" src="https://img.icons8.com/ios-filled/50/1b5e20/project.png" alt="project"/><b className='ml-2'>10+</b>
+                                    <BarChartIcon/>
+                                    {/* <img width="28" height="28" src="https://img.icons8.com/ios-filled/50/project.png" alt="project"/> */}
+                                    <b className='ml-2'>10+</b>
                                     </Typography>
                                     <Typography variant="body2" >
                                         Successful Endeavors
@@ -115,7 +118,9 @@ function Home() {
                                 </Box>
                                 <Box className="f-width" sx={{ textAlign: 'center' }}>
                                     <Typography variant="h5" fontWeight={'bold'} sx={{ color: theme.headingColor, mb: 1 }}>
-                                    <img width="28" height="28" src="https://img.icons8.com/ios-filled/50/1b5e20/project.png" alt="project"/><b className='ml-2'>5+</b>
+                                    <BarChartIcon/>
+                                    {/* <img width="28" height="28" src="https://img.icons8.com/ios-filled/50/project.png" alt="project"/> */}
+                                    <b className='ml-2'>5+</b>
                                     </Typography>
                                     <Typography variant="body2" >
                                         Completed Projects
