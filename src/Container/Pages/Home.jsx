@@ -61,11 +61,11 @@ function Home() {
                     <Grid mt={10} item xs={12} md={7}>
                         <Box className={`page-heading ${animate ? 'animate' : ''}`}>
                             <h4 style={{color:theme.type == "light" ? "#748383" : "#fff", fontSize:"20px",fontWeight:"700"}}>⎯⎯  HELLO</h4>
-                            <Typography variant='h1' sx={{color:theme.type == "light" ? "#405151" : "#fff",fontSize:{xs:'26px !important', sm:'48px !important'}}}>I❜M <span style={{color:theme.headingColor}}>{currentText}</span></Typography>
-                            <div className="my-5">
-                                <p style={{color: theme.textColor}}>A Full-Stack Developer crafting seamless web experiences,</p>
-                                <p style={{color: theme.textColor}}>bridging the gap between robust backends and dynamic frontends.</p>
-                            </div>
+                            <Typography fontFamily={'sans-serif'} variant='h1' sx={{color:theme.type == "light" ? "#405151" : "#fff",fontSize:{xs:'26px !important', sm:'48px !important'}}}>I❜M <span style={{color:theme.headingColor}}>{currentText}</span></Typography>
+                            <Box className="my-5">
+                                <Typography fontFamily={'sans-serif'} variant='p' style={{color: theme.textColor}}>A Full-Stack Developer crafting seamless web experiences,</Typography>
+                                <Typography fontFamily={'sans-serif'} variant='p' style={{color: theme.textColor}}>bridging the gap between robust backends and dynamic frontends.</Typography>
+                            </Box>
 
                             <Box
                                 component="img"
