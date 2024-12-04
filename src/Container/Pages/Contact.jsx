@@ -119,6 +119,8 @@ const SubmitButton = styled(Button)(({ theme }) => ({
       })
       const [open, setOpen] = React.useState(false);
       const [submit, setSubmit] = React.useState(false);
+      const [message, setMessage] = React.useState("");
+      const [successType, setSuccessType] = React.useState("success");
       const formRef = useRef(null);
 
       const handleClick = () => {
@@ -165,24 +167,31 @@ const SubmitButton = styled(Button)(({ theme }) => ({
           return;
         }
         setSubmit(true)
-
-        formData.append("access_key", process.env.REACT_APP_API_KEY);
-
+        formData.append("access_key", 'cc0d8a0e-9a2a-46d6-87a7-f99744dc5c92');
         const response = await fetch("https://api.web3forms.com/submit", {
           method: "POST",
           body: formData
         });
 
         const data = await response.json();
-
+        console.log("messssss",data.message);
         if (data.success) {
-          formRef.current.reset();
+          setData({
+            firstName: '',
+            lastName: '',
+            email: '',
+            phone: '',
+            message: '',
+          });
           setOpen(true);
           setSubmit(false)
+          setMessage(data.message)
+          setSuccessType("success")
         } else {
-          console.log("Error", data);
           setOpen(true);
           setSubmit(false)
+          setMessage(data.message)
+          setSuccessType("error")
         }
       };
 
@@ -217,11 +226,11 @@ const SubmitButton = styled(Button)(({ theme }) => ({
                       onClose={handleClose}>
                     <Alert
                       onClose={handleClose}
-                      severity="success"
+                      severity={successType}
                       variant="filled"
                       sx={{ width: '100%' }}
                     >
-                      Data submit Successfully.
+                      {message}
                     </Alert>
                   </Snackbar>
                   <Grid container pt={2}>
