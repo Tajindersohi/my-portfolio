@@ -90,7 +90,7 @@ function Home() {
                             <Box my={5} textAlign={'left'}>
                                 <Grid container spacing={2} justifyContent="left">
                                     <Grid item xs={12} sm={12} md={4} textAlign={'center'}> {/* Change sm={6} to sm={4} */}
-                                        <a style={{ width: '80%' }} href="/Pdf/Resume(Tajinder).pdf" className="project-button text-center" download>
+                                        <a style={{ width: '80%' }} href="/Pdf/TajinderResume.pdf" className="project-button text-center" download>
                                             Download CV
                                         </a>
                                     </Grid>
