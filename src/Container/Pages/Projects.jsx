@@ -14,6 +14,16 @@ function Projects() {
   // Project Data
   const projects = [
     {
+      title: "Just Buy",
+      description: "Just Buy is a modern e-commerce platform designed for instant grocery and product delivery, similar to Blinkit and Zepto. I contributed to building a seamless and responsive frontend along with robust backend support to ensure fast, reliable service and smooth cart and order management.",
+      keyContributions: [
+        { title: "Frontend Development", description: "Built dynamic React components with MUI to create a fast, responsive, and modern user interface." },
+        { title: "Cart & Checkout System", description: "Implemented a fully functional cart and checkout flow with Redux Toolkit and custom APIs." },
+        { title: "Location & Address Modal", description: "Designed an interactive address selection modal with live location detection and map preview for improved UX." }
+      ],
+      projectLink: "https://just-buy-client.vercel.app"
+    },
+    {
       title: "ProntoCaseCash",
       description: "I contributed to ProntoCaseCash, an innovative insurance platform that simplifies the application process for clients. My role involved enhancing the user experience and optimizing the application flow, making it easier for users to secure the coverage they need.",
       keyContributions: [
@@ -56,69 +66,129 @@ function Projects() {
   ];
 
   return (
-    <Box sx={{ padding: 4, backgroundColor: theme.background, minHeight: '100vh' }}>
-      <Grid container spacing={4}>
-        <Grid item xs={12} textAlign="center">
-          <Typography sx={{ fontWeight: 800, color: theme.headingColor }} variant="h4" gutterBottom>
-            ⎯ Projects
+  <Box sx={{ py: 6, px: { xs: 2, sm: 4 },minHeight: '100vh' }}>
+    <Grid container spacing={4}>
+      <Grid item xs={12} textAlign="center">
+          <Typography  mb={6} color={theme.headingColor} variant="h4">
+              ⎯ Projects
           </Typography>
-        </Grid>
+      </Grid>
 
-        {projects.map((project, index) => (
-          <Grid key={index} item xs={12} className={`page-heading ${animate ? 'animate' : ''}`}>
+      {projects.map((project, index) => (
+          <Grid key={index} item xs={12} sm={6} lg={4} sx={{ display: 'flex' }}>
             <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column', // The default column layout for the text content
-                padding: 2,
-                borderRadius: '10px',
-                backgroundColor: theme.projectBackgroundColor,
-                cursor: 'pointer',
-                boxShadow: `0px 0px 0px 8px rgba(27, 94, 32, 0.16)`,
-                transition: 'box-shadow 0.3s ease',
-                '&:hover': {
-                  boxShadow: `0px 0px 0px 10px rgba(27, 94, 32, 0.16)`,
-                }
-              }}
-            >
-              <Typography variant="h6" component="h2" color={theme.subHeadingColor} sx={{ marginBottom: 1 }}>
+            className={animate ? 'animate-card' : ''}
+            sx={{
+              borderRadius: 3,
+              p: 0.5,
+              background: `linear-gradient(135deg, ${theme.cardGradientStart}, ${theme.cardGradientEnd})`,
+              transition: 'transform 0.4s ease',
+              flexGrow: 1,
+              display: 'flex',
+              '&:hover': {
+                transform: 'translateY(-8px)',
+              },
+            }}
+          >
+
+              <Box
+                sx={{
+                  borderRadius: 2.5,
+                  backgroundColor: theme.projectBackgroundColor,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  transition: 'background-color 0.3s ease',
+                  p: 3,
+                  flexGrow: 1,
+                  minHeight: '480px', // <== consistent height
+                }}
+              >
+              <Typography variant="h6" sx={{ color: theme.subHeadingColor, fontWeight: 700 }}>
                 {`${index + 1}. ${project.title}`}
               </Typography>
-              <Typography variant="body2" color={theme.paragraphColor} paragraph>
+
+              <Typography
+                variant="body2"
+                sx={{ color: theme.paragraphColor, mt: 1, minHeight: '70px' }}
+              >
                 {project.description}
               </Typography>
 
-              {/* Row Layout for Key Contributions and Link */}
-              <Box sx={{ display: {xs:'block' ,md:'flex'}, alignItems: 'center', marginTop: 2 , fontSize:'10px'}}>
-                {/* Key Contributions Heading */}
-                <Typography variant="h6" component="h3" color={theme.subHeadingColor} sx={{ marginRight: 2 }}>
-                  Key Contributions:
+              <Box sx={{ mt: 2 }}>
+                <Typography
+                  variant="subtitle2"
+                  sx={{
+                    fontWeight: 600,
+                    color: theme.subHeadingColor,
+                    mb: 1,
+                    borderBottom: `2px solid #308d46`,
+                    display: 'inline-block',
+                  }}
+                >
+                  Key Contributions
                 </Typography>
-                {project.projectLink &&
-                  <Typography variant="h6" component="h3" color={theme.subHeadingColor}>
-                    <Link href={project.projectLink} target="_blank" sx={{ color: theme.linkColor, textDecoration: 'none' }}>
-                      Visit Project
-                    </Link>
-                  </Typography>
-                }
+
+                <List dense>
+                  {project.keyContributions.map((item, i) => (
+                    <ListItem key={i} disableGutters sx={{ alignItems: 'flex-start' }}>
+                      <ListItemText
+                        primary={
+                          <Typography variant="subtitle2" sx={{ fontWeight: 600, color: theme.textColor }}>
+                            📌 {item.title}
+                          </Typography>
+                        }
+                        secondary={
+                          <Typography variant="body2" sx={{ color: theme.textColor }}>
+                            {item.description}
+                          </Typography>
+                        }
+                      />
+                    </ListItem>
+                  ))}
+                </List>
               </Box>
 
-              {/* Key Contributions List */}
-              <List sx={{ marginTop: 2 }}>
-                {project.keyContributions.map((contribution, idx) => (
-                  <ListItem sx={{ color: theme.textColor }} key={idx}>
-                    <ListItemText
-                      primary={<strong>{contribution.title}</strong>}
-                      secondary={<span style={{ color: theme.textColor }}>{contribution.description}</span>}
-                    />
-                  </ListItem>
-                ))}
-              </List>
+              {project.projectLink && (
+                <Box sx={{ mt: 2 }}>
+                  <Link
+                    href={project.projectLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    underline="none"
+                    sx={{
+                      display: 'inline-block',
+                      mt: 2,
+                      px: 3,
+                      py: 1.2,
+                      backgroundColor: '#d3f4df', // light pastel green
+                      color: '#215732',
+                      fontWeight: 600,
+                      fontSize: '0.875rem',
+                      borderRadius: '30px',
+                      textAlign: 'center',
+                      boxShadow: '0 2px 6px rgba(0, 0, 0, 0.05)',
+                      transition: 'all 0.25s ease-in-out',
+                      '&:hover': {
+                        backgroundColor: '#b2e8c7',
+                        color: '#174a2a',
+                        transform: 'translateY(-2px)',
+                        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+                      },
+                    }}
+                  >
+                    Visit Project
+                  </Link>
+
+                </Box>
+              )}
             </Box>
-          </Grid>
-        ))}
-      </Grid>
-    </Box>
+          </Box>
+        </Grid>
+      ))}
+    </Grid>
+  </Box>
+
   );
 }
 

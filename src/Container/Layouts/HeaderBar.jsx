@@ -13,7 +13,7 @@ import { useLocation, Link } from 'react-router-dom';
 import ThemeToggle from '../Common/ThemeToggle';
 import './style.css';
 // import logo1 from '../../Components/Images/Image__1_-removebg-preview.svg'
-import logo1 from '../../Components/Images/Image (1).png'
+import logo1 from '../../Components/Images/mylogo-new.png'
 
 const drawerWidth = 200;
 const navItems = [
@@ -38,7 +38,7 @@ function HeaderBar({ theme, setTheme, ...props }) {
     <Box onClick={handleDrawerToggle} sx={{ backgroundColor: theme.backgroundColor,color:theme.textColor, justifyContent: 'center', display: 'block',textAlign: 'center'  }} >
       <List>
         <ListItem sx={{justifyContent:'center', padding:'5px'}}>
-            <img src={logo1} alt='Logo' height="70px" width="100px"/>
+            <img src={logo1} alt='Logo' height="50px" width="100px"/>
         </ListItem>
         {navItems.map((item) => (
           <ListItem key={item.title} disablePadding sx={{justifyContent:'center'}}>
@@ -72,7 +72,7 @@ function HeaderBar({ theme, setTheme, ...props }) {
             sx={{ 
               position: 'absolute', 
               display :{xs:'none',sm:'none',md:'block'},
-              left: { xs: '25%', sm:'-70px', md: '-40px' },  // Adjust positioning based on screen size
+              left: { xs: '25%', sm:'-70px', md: '10px' },  // Adjust positioning based on screen size
             }}>
           <Link
             className={`nav-buttons ${currentRoute === '/' ? 'active' : ''}`}
@@ -80,7 +80,7 @@ function HeaderBar({ theme, setTheme, ...props }) {
             style={{ color: theme.textColor }}
           >
             {/* <b style={{fontSize:"40px"}}>Tajinder</b> */}
-            <img src={logo1}  alt='Logo' height="100px" width="150px"/>
+            <img src={logo1}  alt='Logo' height="80px" width="100px"/>
             </Link>
         </Box>
           <IconButton
@@ -104,7 +104,7 @@ function HeaderBar({ theme, setTheme, ...props }) {
               </Link>
             ))}
           </Box>
-          <Box sx={{ position: 'absolute', right: 0 }}>
+          <Box sx={{ position: 'absolute', right: '30px' }}>
             <ThemeToggle />
           </Box>
         </Toolbar>
